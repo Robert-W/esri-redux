@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <meta name="author" content="RobertW">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta http-equiv="Content-Security-Policy" content="
+      script-src 'self' js.arcgis.com 'unsafe-inline' 'unsafe-eval';
+      style-src 'self' js.arcgis.com 'unsafe-inline';
+    ">
+    <meta charset="utf-8">
+    <!-- inject:critical -->
+    <link rel="stylesheet" href="//js.arcgis.com/4.0/esri/css/main.css">
+  </head>
+  <body>
+    <div id='react-mount'></div>
+    <script>
+      var base = location.href.replace(/\/[^/]+$/, '');
+      var dojoConfig = {
+        parseOnLoad: false,
+        async: true,
+        packages: [
+          { name: 'js', location: base + '/js' },
+          { name: 'libs', location: base + '/libs' }
+        ],
+        aliases: [
+          ['redux', 'libs/redux/index'],
+          ['react', 'libs/react/react.min'],
+          ['react-dom', 'libs/react/react-dom.min']
+        ],
+        deps: ['dojo/domReady!'],
+        callback: function () { require(['js/main']); }
+      };
+    </script>
+    <script src='//js.arcgis.com/4.0/init.js'></script>
+  </body>
+</html>

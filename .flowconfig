@@ -1,0 +1,17 @@
+[include]
+src/**/*.js
+[ignore]
+.*/node_modules
+[libs]
+declarations
+[options]
+module.name_mapper='js'->'<PROJECT_ROOT>/src/js/'
+module.name_mapper='libs'->'<PROJECT_ROOT>/build/libs/'
+module.name_mapper='redux'->'<PROJECT_ROOT>/build/libs/redux/index'
+module.name_mapper='react'->'<PROJECT_ROOT>/build/libs/react/react.min'
+module.name_mapper='react-dom'->'<PROJECT_ROOT>/build/libs/react/react-dom.min'
+module.name_mapper='esri\/.*'->'<PROJECT_ROOT>/src/js/config.js'
+module.name_mapper='dojo\/.*'->'<PROJECT_ROOT>/src/js/config.js'
+module.name_mapper='dijit\/.*'->'<PROJECT_ROOT>/src/js/config.js'
+esproposal.class_static_fields=enable
+esproposal.class_instance_fields=enable
