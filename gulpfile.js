@@ -45,13 +45,13 @@ gulp.task('sass-dist', function () {
 
 gulp.task('html-inject-build', ['sass-build'], function () {
   return gulp.src(config.html.src)
-    .pipe(replace('<!-- inject:critical -->', '<style>' + fs.readFileSync(config.html.style.dev, 'utf8') + '</style>'))
+    .pipe(replace('<!-- inject:critical.css -->', '<style>' + fs.readFileSync(config.html.style.dev, 'utf8') + '</style>'))
     .pipe(gulp.dest(config.html.build));
 });
 
 gulp.task('html-inject-dist', ['sass-dist'], function () {
   return gulp.src(config.html.src)
-    .pipe(replace('<!-- inject:critical -->', '<style>' + fs.readFileSync(config.html.style.prod, 'utf8') + '</style>'))
+    .pipe(replace('<!-- inject:critical.css -->', '<style>' + fs.readFileSync(config.html.style.prod, 'utf8') + '</style>'))
     .pipe(gulp.dest(config.html.build));
 });
 
