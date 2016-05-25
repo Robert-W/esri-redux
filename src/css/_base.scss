@@ -8,8 +8,27 @@ html, body, #react-mount, .root {
 }
 
 *, *:after, *:before {
-  -webkit-tap-highlight-color:rgba(0,0,0,0);
+  -webkit-tap-highlight-color: $transparent-background;
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+ol, ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+// Atomic Classes
+.hidden {
+  display: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.shadow {
+  box-shadow: 2px 2px 2px $shadow-background;
 }

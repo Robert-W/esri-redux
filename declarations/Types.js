@@ -5,9 +5,12 @@ declare type ReduxAction = {
 };
 
 declare type AppState = {
+  locateModalVisible: bool,
+  shareModalVisible: bool,
   viewReady: bool
 };
 
-declare type EsriView = {} | {
-  goTo: Function
+declare type EsriView = Object | {
+  goTo: Function,
+  zoom: number
 };

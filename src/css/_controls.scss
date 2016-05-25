@@ -1,0 +1,33 @@
+.map-controls {
+  position: absolute;
+  background: white;
+  width: 80px;
+  right: 20px;
+  z-index: 5;
+  top: 80px;
+}
+
+.map-controls__list {
+  border-bottom: 1px solid $lightgray-border;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+.map-controls__item {
+  border-right: 1px solid $lightgray-border;
+  border-top: 1px solid $lightgray-border;
+  display: flex;
+  height: 40px;
+  width: 40px;
+}
+
+.map-controls__item:nth-child(odd) {
+  border-left: 1px solid $lightgray-border;
+}
+
+.map-controls__item-icon {
+  display: block;
+  margin: auto;
+  height: 25px;
+  width: 25px;
+}
