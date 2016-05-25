@@ -1,8 +1,10 @@
 /* @flow */
-import React, {Component} from 'react';
+import LocateModal from 'js/components/modals/Locate';
+import ShareModal from 'js/components/modals/Share';
 import {mapOptions, viewOptions} from 'js/config';
 import {viewCreated} from 'js/actions/mapActions';
 import Controls from 'js/components/Controls';
+import React, {Component} from 'react';
 import appStore from 'js/appStore';
 import MapView from 'esri/views/MapView';
 import EsriMap from 'esri/Map';
@@ -44,9 +46,13 @@ export default class Map extends Component {
   };
 
   render () {
+    const {shareModalVisible, locateModalVisible} = this.state;
+
     return (
       <div ref='mapView' className='map-view'>
         <Controls view={this.view} />
+        <LocateModal active={locateModalVisible} />
+        <ShareModal active={shareModalVisible} />
       </div>
     );
   }

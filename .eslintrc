@@ -14,7 +14,9 @@
     "require": true,
     "AppState": true,
     "EsriView": true,
-    "ReduxAction": true
+    "ModalProps": true,
+    "ReduxAction": true,
+    "ModalWrapperProps": true
   },
   "plugins": [
     "react"
