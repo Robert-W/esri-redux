@@ -41,6 +41,9 @@ See [Resources](#resources)
 
 
 ### Performance considerations
+1. Prerender with [react-prerender](https://github.com/Robert-W/react-prerender).  This will prerender your react component and inject it into your html.  This will give the appearance that your components have already rendered when the page loads without having to wait for the JSAPI, React, or your own modules to load.  Once react loads, it will mount to it and start from there.
+2. Async assets when possible.  The ArcGIS Javascript API is loaded with an async tag.  It also will defer loading `app.css` and Esri's CSS until after the above the fold content loads, this is so that those assets don't block the loading of the main `index.html` file.
+3. Inject `critical.css` into `index.html` so that above the fold content does not need another trip to the server to render properly, thus avoiding that annoying flash of un-styled content that some pages have.
 
 ### Security
 This has the ability to run in HTTPS since it uses protocol agnostic resources. It also has a Content Security Policy with the following configurations for local resources and `js.arcgis.com` resources, which can be tweaked or removed from the app by modifying it in the head section of `src/index.html`.

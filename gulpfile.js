@@ -1,7 +1,9 @@
 /* eslint-disable */
 var babelPlugin = require('rollup-plugin-babel'),
+    prerender = require('react-prerender'),
     browserSync = require('browser-sync'),
     replace = require('gulp-replace'),
+    htmlmin = require('gulp-htmlmin'),
     sass = require('gulp-sass'),
     rollup = require('rollup'),
     gulp = require('gulp'),
@@ -27,6 +29,11 @@ var config = {
     style: {
       dev: 'build/css/critical.css',
       prod: 'dist/css/critical.css'
+    },
+    minOptions: {
+      collapseWhitespace: true,
+      removeComments: true,
+      minifyJS: true
     }
   },
   rollup: {
@@ -74,6 +81,7 @@ gulp.task('html-inject-build', ['sass-build'], function () {
 gulp.task('html-inject-dist', ['sass-dist'], function () {
   return gulp.src(config.html.src)
     .pipe(replace('<!-- inject:critical.css -->', '<style>' + fs.readFileSync(config.html.style.prod, 'utf8') + '</style>'))
+    .pipe(htmlmin(config.html.minOptions))
     .pipe(gulp.dest(config.html.dist));
 });
 
@@ -87,6 +95,27 @@ gulp.task('rollup', function () {
     plugins: [babelPlugin(), resolver()]
   }).then(function (bundle) {
     bundle.write(config.rollup.bundle);
+  });
+});
+
+gulp.task('prerender', function () {
+  var html = path.join(__dirname, 'dist/index.html'),
+      rootComponent = 'js/components/App',
+      mountQuery = '#react-mount',
+      requirejs = {
+        buildProfile: path.join(__dirname, 'rjs.build.js'),
+        map: {
+          moduleRoot: path.join(__dirname, 'build/js'),
+          remapModule: 'js/config',
+          ignorePatterns: [/esri\//, /dojo\//, /dijit\//]
+        }
+      };
+
+  prerender({
+    component: rootComponent,
+    requirejs: requirejs,
+    mount: mountQuery,
+    target: html
   });
 });
 
