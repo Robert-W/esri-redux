@@ -1,7 +1,11 @@
-var browserSync = require('browser-sync'),
+/* eslint-disable */
+var babelPlugin = require('rollup-plugin-babel'),
+    browserSync = require('browser-sync'),
     replace = require('gulp-replace'),
     sass = require('gulp-sass'),
+    rollup = require('rollup'),
     gulp = require('gulp'),
+    path = require('path'),
     fs = require('fs');
 
 var config = {
@@ -18,13 +22,31 @@ var config = {
   },
   html: {
     src: 'src/index.html',
-    dist: 'dist/index.html',
+    dist: 'dist',
     build: 'build',
     style: {
       dev: 'build/css/critical.css',
       prod: 'dist/css/critical.css'
     }
+  },
+  rollup: {
+    entry: 'src/js/main.js',
+    bundle: {
+      dest: 'build/js/main.js',
+      format: 'amd'
+    }
   }
+};
+
+//- Custom resolver for rollup
+var resolver = function resolver () {
+  return {
+    resolveId: function (code, id) {
+      if (id && code.search(/js\//) > -1) {
+        return path.join(__dirname, 'src', code + '.js');
+      }
+    }
+  };
 };
 
 gulp.task('sass-build', function () {
@@ -52,11 +74,20 @@ gulp.task('html-inject-build', ['sass-build'], function () {
 gulp.task('html-inject-dist', ['sass-dist'], function () {
   return gulp.src(config.html.src)
     .pipe(replace('<!-- inject:critical.css -->', '<style>' + fs.readFileSync(config.html.style.prod, 'utf8') + '</style>'))
-    .pipe(gulp.dest(config.html.build));
+    .pipe(gulp.dest(config.html.dist));
 });
 
 gulp.task('html-watch', function () {
   gulp.watch([config.html.src, config.html.style.dev], ['html-inject-build']);
+});
+
+gulp.task('rollup', function () {
+  return rollup.rollup({
+    entry: config.rollup.entry,
+    plugins: [babelPlugin(), resolver()]
+  }).then(function (bundle) {
+    bundle.write(config.rollup.bundle);
+  });
 });
 
 gulp.task('browser-sync', function () {
@@ -77,4 +108,4 @@ gulp.task('browser-sync', function () {
 
 gulp.task('serve', ['browser-sync']);
 gulp.task('start', ['sass-build', 'sass-watch', 'html-inject-build', 'html-watch']);
-gulp.task('dist', ['sass-dist', 'html-inject-dist']);
+gulp.task('dist', ['sass-dist', 'html-inject-dist', 'rollup']);

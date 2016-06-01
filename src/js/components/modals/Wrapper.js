@@ -47,6 +47,13 @@ const stylesheet:any = {
   }
 };
 
+type ModalWrapperProps = {
+  close: Function,
+  active: bool,
+  theme?: string,
+  children?: any
+};
+
 export default class ModalWrapper extends Component {
 
   props: ModalWrapperProps;

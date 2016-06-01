@@ -2,6 +2,6 @@
   "name": "esri-redux",
   "dependencies": {
     "react": "~15.0.2",
-    "redux": "https://npmcdn.com/redux/dist/redux.js"
+    "redux": "https://npmcdn.com/redux/dist/redux.min.js"
   }
 }

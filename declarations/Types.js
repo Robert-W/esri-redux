@@ -7,13 +7,6 @@ declare type AppState = {
   viewReady: bool
 };
 
-declare type ModalWrapperProps = {
-  close: Function,
-  active: bool,
-  theme?: string,
-  children?: any
-};
-
 declare type ModalProps = { active: bool };
 
 // Redux Types
