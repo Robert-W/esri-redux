@@ -13,10 +13,10 @@ export default class LocateModal extends Component {
   };
 
   render () {
-    const {active} = this.props;
+    const {visible} = this.props;
 
     return (
-      <Wrapper theme='locate-modal' active={active} close={this.close}>
+      <Wrapper theme='locate-modal' visible={visible} close={this.close}>
         <h3>Locate Something</h3>
       </Wrapper>
     );

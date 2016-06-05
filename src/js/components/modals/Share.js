@@ -13,10 +13,10 @@ export default class ShareModal extends Component {
   };
 
   render () {
-    const {active} = this.props;
+    const {visible} = this.props;
 
     return (
-      <Wrapper theme='share-modal' active={active} close={this.close}>
+      <Wrapper theme='share-modal' visible={visible} close={this.close}>
         <h3>Share Something</h3>
       </Wrapper>
     );

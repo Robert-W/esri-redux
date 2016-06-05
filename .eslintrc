@@ -15,7 +15,11 @@
     "AppState": true,
     "EsriView": true,
     "ModalProps": true,
+    "HeaderProps": true,
     "ReduxAction": true,
+    "SpinnerProps": true,
+    "ControlsProps": true,
+    "ModalActionArgs": true,
     "ModalWrapperProps": true
   },
   "plugins": [

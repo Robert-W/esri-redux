@@ -9,6 +9,7 @@ export const text = {
 
 export const mapOptions = {
   basemap: 'streets-navigation-vector'
+  // basemap: 'dark-gray-vector'
 };
 
 export const viewOptions = {

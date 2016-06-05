@@ -5,10 +5,10 @@ export function viewCreated (): ReduxAction {
   return { type: VIEW_READY };
 }
 
-export function toggleShareModal (data: { visible: bool }): ReduxAction {
+export function toggleShareModal (data: ModalActionArgs): ReduxAction {
   return { type: SHOW_SHARE, data };
 }
 
-export function toggleLocateModal (data: { visible: bool }): ReduxAction {
+export function toggleLocateModal (data: ModalActionArgs): ReduxAction {
   return { type: SHOW_LOCATE, data };
 }

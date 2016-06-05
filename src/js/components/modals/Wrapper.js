@@ -47,26 +47,19 @@ const stylesheet:any = {
   }
 };
 
-type ModalWrapperProps = {
-  close: Function,
-  active: bool,
-  theme?: string,
-  children?: any
-};
-
 export default class ModalWrapper extends Component {
 
   props: ModalWrapperProps;
 
   render () {
-    const { active, close, theme} = this.props;
+    const { visible, close, theme} = this.props;
     //- Build up the attributes
     const modalAttrs:any = {
       style: {...stylesheet.modal}
     };
 
     //- show or hide the container
-    stylesheet.modalContainer.display = active ? 'block' : 'none';
+    stylesheet.modalContainer.display = visible ? 'block' : 'none';
 
     //- add a className if theme is provided
     if (theme) { modalAttrs.className = theme; }

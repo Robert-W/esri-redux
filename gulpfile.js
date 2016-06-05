@@ -1,11 +1,8 @@
 /* eslint-disable */
-var babelPlugin = require('rollup-plugin-babel'),
-    prerender = require('react-prerender'),
-    browserSync = require('browser-sync'),
+var browserSync = require('browser-sync'),
     replace = require('gulp-replace'),
     htmlmin = require('gulp-htmlmin'),
     sass = require('gulp-sass'),
-    rollup = require('rollup'),
     gulp = require('gulp'),
     path = require('path'),
     fs = require('fs');
@@ -35,25 +32,7 @@ var config = {
       removeComments: true,
       minifyJS: true
     }
-  },
-  rollup: {
-    entry: 'src/js/main.js',
-    bundle: {
-      dest: 'build/js/main.js',
-      format: 'amd'
-    }
   }
-};
-
-//- Custom resolver for rollup
-var resolver = function resolver () {
-  return {
-    resolveId: function (code, id) {
-      if (id && code.search(/js\//) > -1) {
-        return path.join(__dirname, 'src', code + '.js');
-      }
-    }
-  };
 };
 
 gulp.task('sass-build', function () {
@@ -89,36 +68,6 @@ gulp.task('html-watch', function () {
   gulp.watch([config.html.src, config.html.style.dev], ['html-inject-build']);
 });
 
-gulp.task('rollup', function () {
-  return rollup.rollup({
-    entry: config.rollup.entry,
-    plugins: [babelPlugin(), resolver()]
-  }).then(function (bundle) {
-    bundle.write(config.rollup.bundle);
-  });
-});
-
-gulp.task('prerender', function () {
-  var html = path.join(__dirname, 'dist/index.html'),
-      rootComponent = 'js/components/App',
-      mountQuery = '#react-mount',
-      requirejs = {
-        buildProfile: path.join(__dirname, 'rjs.build.js'),
-        map: {
-          moduleRoot: path.join(__dirname, 'build/js'),
-          remapModule: 'js/config',
-          ignorePatterns: [/esri\//, /dojo\//, /dijit\//]
-        }
-      };
-
-  prerender({
-    component: rootComponent,
-    requirejs: requirejs,
-    mount: mountQuery,
-    target: html
-  });
-});
-
 gulp.task('browser-sync', function () {
   var useHttps = process.env.SERVER === 'https';
 
@@ -137,4 +86,4 @@ gulp.task('browser-sync', function () {
 
 gulp.task('serve', ['browser-sync']);
 gulp.task('start', ['sass-build', 'sass-watch', 'html-inject-build', 'html-watch']);
-gulp.task('dist', ['sass-dist', 'html-inject-dist', 'rollup']);
+gulp.task('dist', ['sass-dist', 'html-inject-dist']);

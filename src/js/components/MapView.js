@@ -1,6 +1,7 @@
 /* @flow */
 import LocateModal from 'js/components/modals/Locate';
 import ShareModal from 'js/components/modals/Share';
+import Spinner from 'js/components/shared/Spinner';
 import {mapOptions, viewOptions} from 'js/config';
 import {viewCreated} from 'js/actions/mapActions';
 import Controls from 'js/components/Controls';
@@ -13,18 +14,16 @@ export default class Map extends Component {
 
   displayName: 'Map';
   state: AppState;
-  props: any;
   unsubscribe: Function;
 
   state: AppState = appStore.getState();
   view: EsriView = {};
 
-  constructor (props?: any) {
-    super(props);
-    this.unsubscribe = appStore.subscribe(this.storeDidUpdate);
-  }
-
   componentDidMount() {
+    // Subscribe to the store for updates
+    this.unsubscribe = appStore.subscribe(this.storeDidUpdate);
+
+    // Create our map view
     const promise = new MapView({
       container: this.refs.mapView,
       map: new EsriMap(mapOptions),
@@ -51,8 +50,9 @@ export default class Map extends Component {
     return (
       <div ref='mapView' className='map-view'>
         <Controls view={this.view} />
-        <LocateModal active={locateModalVisible} />
-        <ShareModal active={shareModalVisible} />
+        <Spinner active={!this.view.ready} />
+        <ShareModal visible={shareModalVisible} />
+        <LocateModal visible={locateModalVisible} />
       </div>
     );
   }
