@@ -6,7 +6,7 @@
   "scripts": {
     "start": "npm run babel -- -w & gulp start & gulp serve",
     "secure": "npm run babel -- -w & gulp start & SERVER=https gulp serve",
-    "dist": "BABEL_ENV=production node ./build; gulp dist;",
+    "dist": "gulp dist;BABEL_ENV=production node ./build;",
     "babel": "babel src --out-dir build",
     "test": "eslint src/js/**/*.js; flow check;",
     "postinstall": "bower install;",
