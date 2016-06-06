@@ -9,7 +9,7 @@ declare type ControlsProps = {
 
 declare type SpinnerProps = {
   active: bool,
-  color?: string,
+  fill?: string,
   backgroundColor?: string
 };
 

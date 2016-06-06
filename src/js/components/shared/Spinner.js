@@ -26,14 +26,14 @@ export default class Spinner extends Component {
   props: SpinnerProps;
 
   render () {
-    const {backgroundColor, foregroundColor, active} = this.props;
+    const {backgroundColor, active, fill} = this.props;
     // Set background if passed in
     if (backgroundColor) { stylesheet.background.background = backgroundColor; }
     // Show the spinner if it is active
     stylesheet.background.display = active ? 'block' : 'none';
     // Construct the foreground styles
     let foreground = `${!active ? '' : stylesheet.animation};`;
-    foreground += `fill: ${foregroundColor || stylesheet.foreground.fill};`;
+    foreground += `fill: ${fill || stylesheet.foreground.fill};`;
 
     return (
       <div style={stylesheet.background}>

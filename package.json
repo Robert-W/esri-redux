@@ -9,8 +9,7 @@
     "dist": "gulp dist;BABEL_ENV=production node ./build;",
     "babel": "babel src --out-dir build",
     "test": "eslint src/js/**/*.js; flow check;",
-    "postinstall": "bower install;",
-    "build": "BABEL_ENV=production node ./build"
+    "postinstall": "bower install;"
   },
   "keywords": [
     "esri",
