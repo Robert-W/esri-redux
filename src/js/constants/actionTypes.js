@@ -1,4 +1,5 @@
 /* @flow */
-export const VIEW_READY:string = 'VIEW_READY',
-             SHOW_LOCATE:string = 'SHOW_LOCATE',
-             SHOW_SHARE:string = 'SHOW_SHARE';
+export const
+  VIEW_READY:string = 'VIEW_READY',
+  TOGGLE_LOCATE:string = 'TOGGLE_LOCATE',
+  TOGGLE_SHARE:string = 'TOGGLE_SHARE';

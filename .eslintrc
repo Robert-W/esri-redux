@@ -12,15 +12,11 @@
   },
   "globals": {
     "require": true,
-    "AppState": true,
     "EsriView": true,
-    "ModalProps": true,
-    "HeaderProps": true,
+    "Middleware": true,
     "ReduxAction": true,
-    "SpinnerProps": true,
-    "ControlsProps": true,
-    "ModalActionArgs": true,
-    "ModalWrapperProps": true
+    "NextMiddleware": true,
+    "ReduxAsyncAction": true
   },
   "plugins": [
     "react"
@@ -43,7 +39,7 @@
     "react/prop-types": 2,
     "react/react-in-jsx-scope": 2,
     "prefer-const": 2,
-    "no-console": 2,
+    "no-console": 0,
     "no-debugger": 2,
     "no-array-constructor": 2,
     "no-caller": 2,

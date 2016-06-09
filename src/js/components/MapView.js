@@ -10,6 +10,12 @@ import appStore from 'js/appStore';
 import MapView from 'esri/views/MapView';
 import EsriMap from 'esri/Map';
 
+type AppState = {
+  locateModalVisible: bool,
+  shareModalVisible: bool,
+  viewReady: bool
+};
+
 export default class Map extends Component {
 
   displayName: 'Map';

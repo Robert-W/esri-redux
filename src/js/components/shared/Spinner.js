@@ -20,6 +20,12 @@ const stylesheet = {
   foreground: { fill: '#FFFFFF' }
 };
 
+type SpinnerProps = {
+  active: bool,
+  fill?: string,
+  backgroundColor?: string
+};
+
 export default class Spinner extends Component {
 
   displayName: 'Spinner';

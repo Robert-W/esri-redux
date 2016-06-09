@@ -1,5 +1,7 @@
 export const initialState = {
-
+  locateModalVisible: false,
+  shareModalVisible: false,
+  viewReady: false
 };
 
 export const text = {

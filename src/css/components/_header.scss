@@ -1,5 +1,6 @@
 .app-header {
   background-color: $theme-blue;
+  justify-content: center;
   flex-direction: column;
   position: absolute;
   display: flex;
@@ -15,7 +16,6 @@
   align-items: center;
   padding-left: 10px;
   display: flex;
-  height: 50%;
   margin: 0;
 }
 
@@ -24,5 +24,6 @@
 }
 
 .app-subtitle {
-  font-size: 14px;
+  font-weight: normal;
+  font-size: 12px;
 }

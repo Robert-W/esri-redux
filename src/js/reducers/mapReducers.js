@@ -1,19 +1,20 @@
-import { VIEW_READY, SHOW_SHARE, SHOW_LOCATE } from 'js/constants/actionTypes';
+import { VIEW_READY, TOGGLE_SHARE, TOGGLE_LOCATE } from 'js/constants/actionTypes';
+import {initialState} from 'js/config';
 
-export function viewCreated (state = false, action) {
+export function viewCreated (state = initialState.viewReady, action) {
   return action.type !== VIEW_READY ? state : true;
 }
 
-export function toggleLocateModal (state = false, action) {
+export function toggleShareModal (state = initialState.shareModalVisible, action) {
   const {type, data} = action;
-  return type !== SHOW_LOCATE ? state : (
+  return type !== TOGGLE_SHARE ? state : (
     data.visible
   );
 }
 
-export function toggleShareModal (state = false, action) {
+export function toggleLocateModal (state = initialState.locateModalVisible, action) {
   const {type, data} = action;
-  return type !== SHOW_SHARE ? state : (
+  return type !== TOGGLE_LOCATE ? state : (
     data.visible
   );
 }

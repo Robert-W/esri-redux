@@ -10,6 +10,10 @@ const zoomOutSvg = '<use xlink:href="#icon-zoom-out" />',
 
 const animationOptions = { duration: 300 };
 
+type ControlsProps = {
+  view: EsriView
+};
+
 export default class Controls extends Component {
   displayName: 'Controls';
   props: ControlsProps;
