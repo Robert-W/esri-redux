@@ -21,5 +21,5 @@ export const viewOptions = {
 };
 
 export const urls = {
-  itemInfo: (appid: string) => `http://www.arcgis.com/sharing/rest/content/items/${appid}/data`
+  itemInfo: (appid: string) => `//www.arcgis.com/sharing/rest/content/items/${appid}/data`
 };
