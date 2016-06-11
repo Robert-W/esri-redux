@@ -1,7 +1,8 @@
 export const initialState = {
   locateModalVisible: false,
   shareModalVisible: false,
-  viewReady: false
+  viewReady: false,
+  itemInfo: {}
 };
 
 export const text = {
@@ -11,11 +12,14 @@ export const text = {
 
 export const mapOptions = {
   basemap: 'streets-navigation-vector'
-  // basemap: 'dark-gray-vector'
 };
 
 export const viewOptions = {
   ui: { components: ['logo', 'attribution'] },
   center: [-35.55, 26.53],
   zoom: 2
+};
+
+export const urls = {
+  itemInfo: (appid: string) => `http://www.arcgis.com/sharing/rest/content/items/${appid}/data`
 };

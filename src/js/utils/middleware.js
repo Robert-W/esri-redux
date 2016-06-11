@@ -4,18 +4,6 @@ const styles = {
   stateLabel: 'color:blue;'
 };
 
-// sample async action
-// export const someAsyncAction = (params) {
-//   return (dispatch) => {
-//     // dispatch a isLoading state if desired
-//     // dispatch(someOtherAction);
-//     return api.getInfo(params).then((response) => {
-//
-//       dispatch(someOtherAction);
-//     });
-//   };
-// }
-
 /**
 * Async middleware to support asynchronous actions
 */

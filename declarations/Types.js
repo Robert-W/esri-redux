@@ -9,8 +9,10 @@ declare type ReduxAction = {
   data?: any
 };
 
+declare type Dispatch = (action: ReduxAction) => void;
+
 // Async Redux Action
-declare type ReduxAsyncAction = {};
+declare type ReduxAsyncAction = (dispatch: Dispatch) => void;
 
 // Redux Middleware
 declare function Middleware (store: any):NextMiddleware;

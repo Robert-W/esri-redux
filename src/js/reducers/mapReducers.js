@@ -1,4 +1,4 @@
-import { VIEW_READY, TOGGLE_SHARE, TOGGLE_LOCATE } from 'js/constants/actionTypes';
+import { VIEW_READY, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import {initialState} from 'js/config';
 
 export function viewCreated (state = initialState.viewReady, action) {
@@ -17,4 +17,12 @@ export function toggleLocateModal (state = initialState.locateModalVisible, acti
   return type !== TOGGLE_LOCATE ? state : (
     data.visible
   );
+}
+
+/**
+* Reducer for the async action
+*/
+export function getItemInfo (state = initialState.itemInfo, action) {
+  const {type, data} = action;
+  return type !== FETCH_ITEM_INFO ? state : data;
 }

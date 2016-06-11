@@ -12,6 +12,7 @@
   },
   "globals": {
     "require": true,
+    "Dispatch": true,
     "EsriView": true,
     "Middleware": true,
     "ReduxAction": true,
