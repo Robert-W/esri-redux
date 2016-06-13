@@ -85,5 +85,5 @@ gulp.task('browser-sync', function () {
 });
 
 gulp.task('serve', ['browser-sync']);
-gulp.task('start', ['sass-build', 'sass-watch', 'html-inject-build', 'html-watch']);
-gulp.task('dist', ['sass-dist', 'html-inject-dist']);
+gulp.task('start', ['sass-watch', 'html-inject-build', 'html-watch']);
+gulp.task('dist', ['html-inject-dist']);
