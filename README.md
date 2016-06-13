@@ -1,5 +1,5 @@
 # esri-redux
-> Simple boilerplate demonstrating how to setup a project using React, Redux, Flow (if wanted), and the Esri JavaScript API. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).  For the example without Flow, checkout the `master-noflow` branch in this repository.
+> Simple boilerplate demonstrating how to setup a project using React, Redux, Flow (if wanted), and the Esri JavaScript API. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).  For the example without Flow, checkout the [`master-noflow`](https://github.com/Robert-W/esri-redux/tree/master-noflow) branch in this repository.
 
 ### Getting started
 This project requires [Node.js](https://nodejs.org/en/)
