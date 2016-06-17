@@ -5,6 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp serve & gulp start",
+    "secure": "SERVER=https gulp serve & gulp start",
     "dist": "webpack -p --progress --config webpack.production.js;gulp dist;",
     "test": "eslint src/js/**/*.js; flow check;"
   },

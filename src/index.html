@@ -86,19 +86,23 @@
     </svg>
     <div id='react-mount'></div>
     <script>
-      var base = location.href.replace(/\/[^/]+$/, '');
+      // Make sure the basepath ends with a slash
+      var makePath = function makePath (base, path) {
+        var position = base.length - 1;
+        return !path ?
+          (base.indexOf('/', position) !== position ? base + '/' : base) :
+          (base.indexOf('/', position) !== position ?
+            base + '/' + path :
+            base + path
+          )
+      };
+      var base = makePath(location.href.replace(/\/[^/]+$/, ''));
       var dojoConfig = {
         parseOnLoad: false,
         async: true,
         packages: [
-          { name: 'js', location: base + 'js' }
-          // { name: 'libs', location: base + '/libs' }
+          { name: 'js', location: makePath(base, 'js') }
         ],
-        // aliases: [
-        //   ['redux', 'libs/redux/index'],
-        //   ['react', 'libs/react/react.min'],
-        //   ['react-dom', 'libs/react/react-dom.min']
-        // ],
         deps: ['dojo/domReady!'],
         callback: function () { require(['js/main']); }
       };
