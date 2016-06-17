@@ -91,14 +91,14 @@
         parseOnLoad: false,
         async: true,
         packages: [
-          { name: 'js', location: base + '/js' },
-          { name: 'libs', location: base + '/libs' }
+          { name: 'js', location: base + 'js' }
+          // { name: 'libs', location: base + '/libs' }
         ],
-        aliases: [
-          ['redux', 'libs/redux/index'],
-          ['react', 'libs/react/react.min'],
-          ['react-dom', 'libs/react/react-dom.min']
-        ],
+        // aliases: [
+        //   ['redux', 'libs/redux/index'],
+        //   ['react', 'libs/react/react.min'],
+        //   ['react-dom', 'libs/react/react-dom.min']
+        // ],
         deps: ['dojo/domReady!'],
         callback: function () { require(['js/main']); }
       };

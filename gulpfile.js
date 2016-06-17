@@ -1,10 +1,13 @@
 /* eslint-disable */
-var browserSync = require('browser-sync'),
+var webpackDevMiddleware = require('webpack-dev-middleware'),
+    webpackHotMiddleware = require('webpack-hot-middleware'),
+    webpackConfig = require('./webpack.config.js'),
+    browserSync = require('browser-sync'),
     replace = require('gulp-replace'),
     htmlmin = require('gulp-htmlmin'),
+    webpack = require('webpack'),
     sass = require('gulp-sass'),
     gulp = require('gulp'),
-    path = require('path'),
     fs = require('fs');
 
 var config = {
@@ -34,6 +37,30 @@ var config = {
     }
   }
 };
+
+var compiler = webpack(webpackConfig);
+
+gulp.task('serve', function () {
+  browserSync({
+    files: config.server.files,
+    port: config.server.port,
+    reloadOnRestart: false,
+    logFileChanges: false,
+    ghostMode: false,
+    open: false,
+    ui: false,
+    server: {
+      baseDir: config.server.baseDir,
+      middleware: [
+        webpackDevMiddleware(compiler, {
+          publicPath: webpackConfig.output.publicPath,
+          stats: { colors: true }
+        }),
+        webpackHotMiddleware(compiler)
+      ]
+    }
+  });
+});
 
 gulp.task('sass-build', function () {
   return gulp.src(config.scss.src)
@@ -68,22 +95,5 @@ gulp.task('html-watch', function () {
   gulp.watch([config.html.src, config.html.style.dev], ['html-inject-build']);
 });
 
-gulp.task('browser-sync', function () {
-  var useHttps = process.env.SERVER === 'https';
-
-  browserSync({
-    server: config.server.baseDir,
-    files: config.server.files,
-    port: config.server.port,
-    reloadOnRestart: false,
-    logFileChanges: false,
-    ghostMode: false,
-    https: useHttps,
-    open: false,
-    ui: false
-  });
-});
-
-gulp.task('serve', ['browser-sync']);
 gulp.task('start', ['sass-watch', 'html-inject-build', 'html-watch']);
 gulp.task('dist', ['html-inject-dist']);
