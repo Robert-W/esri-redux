@@ -41,12 +41,15 @@ var config = {
 var compiler = webpack(webpackConfig);
 
 gulp.task('serve', function () {
+  var useHttps = process.env.SERVER === 'https';
+
   browserSync({
     files: config.server.files,
     port: config.server.port,
     reloadOnRestart: false,
     logFileChanges: false,
     ghostMode: false,
+    https: useHttps,
     open: false,
     ui: false,
     server: {
