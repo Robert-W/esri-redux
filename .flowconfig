@@ -2,6 +2,7 @@
 src/**/*.js
 [ignore]
 .*/node_modules/fbjs/.*
+.*/node_modules/madge/.*
 [libs]
 declarations
 [options]
