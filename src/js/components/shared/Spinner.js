@@ -3,6 +3,7 @@ import React, {Component} from 'react';
 const stylesheet = {
   background: {
     position: 'absolute',
+    display: 'none',
     height: '100%',
     width: '100%',
     left: 0,
@@ -33,16 +34,17 @@ export default class Spinner extends Component {
 
   render () {
     const {backgroundColor, active, fill} = this.props;
+    let backgroundStyle = Object.assign({}, stylesheet.background);
     // Set background if passed in
-    if (backgroundColor) { stylesheet.background.background = backgroundColor; }
+    if (backgroundColor) { backgroundStyle.background = backgroundColor; }
     // Show the spinner if it is active
-    stylesheet.background.display = active ? 'block' : 'none';
+    backgroundStyle.display = active ? 'block' : 'none';
     // Construct the foreground styles
     let foreground = `${!active ? '' : stylesheet.animation};`;
     foreground += `fill: ${fill || stylesheet.foreground.fill};`;
 
     return (
-      <div style={stylesheet.background}>
+      <div style={backgroundStyle}>
         <div style={stylesheet.spinner}>
           <svg width='50' height='50' dangerouslySetInnerHTML={{ __html: `
               <g transform='translate(25,25) rotate(-90)'>

@@ -2,12 +2,14 @@
 var webpackDevMiddleware = require('webpack-dev-middleware'),
     webpackHotMiddleware = require('webpack-hot-middleware'),
     webpackConfig = require('./webpack.config.js'),
+    prerender = require('react-prerender'),
     browserSync = require('browser-sync'),
     replace = require('gulp-replace'),
     htmlmin = require('gulp-htmlmin'),
     webpack = require('webpack'),
     sass = require('gulp-sass'),
     gulp = require('gulp'),
+    path = require('path'),
     fs = require('fs');
 
 var config = {
@@ -34,6 +36,20 @@ var config = {
       collapseWhitespace: true,
       removeComments: true,
       minifyJS: true
+    }
+  },
+  prerender: {
+    target: path.join(__dirname, 'dist/index.html'),
+    component: 'js/components/App',
+    mount: '#react-mount',
+    requirejs: {
+      baseUrl: path.join(__dirname, 'build'),
+      paths: { 'js': 'js' },
+      map: {
+        ignorePatterns: [/esri\//, /dojo\//, /dijit\//],
+        moduleRoot: path.join(__dirname, 'dist/js'),
+        remapModule: 'js/config'
+      }
     }
   }
 };
@@ -65,20 +81,24 @@ gulp.task('serve', function () {
   });
 });
 
+gulp.task('sass-watch', function () {
+  gulp.watch(config.scss.watch, ['sass-build']);
+});
+
 gulp.task('sass-build', function () {
   return gulp.src(config.scss.src)
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest(config.scss.build));
 });
 
-gulp.task('sass-watch', function () {
-  gulp.watch(config.scss.watch, ['sass-build']);
-});
-
 gulp.task('sass-dist', function () {
   return gulp.src(config.scss.src)
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(gulp.dest(config.scss.dist));
+});
+
+gulp.task('html-watch', function () {
+  gulp.watch([config.html.src, config.html.style.dev], ['html-inject-build']);
 });
 
 gulp.task('html-inject-build', ['sass-build'], function () {
@@ -94,8 +114,8 @@ gulp.task('html-inject-dist', ['sass-dist'], function () {
     .pipe(gulp.dest(config.html.dist));
 });
 
-gulp.task('html-watch', function () {
-  gulp.watch([config.html.src, config.html.style.dev], ['html-inject-build']);
+gulp.task('prerender', function () {
+  prerender(config.prerender);
 });
 
 gulp.task('start', ['sass-watch', 'html-inject-build', 'html-watch']);
