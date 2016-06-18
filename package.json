@@ -11,6 +11,7 @@
     "prerender": "BABEL_ENV=prerender babel src --out-dir build;gulp prerender;"
   },
   "keywords": [
+    "hot",
     "esri",
     "react",
     "redux",
@@ -18,8 +19,10 @@
     "flux",
     "flow",
     "webpack",
+    "hot-reload",
     "javascript",
-    "esri-webpack"
+    "esri-webpack",
+    "hot-module-replacement"
   ],
   "author": "RobertW",
   "license": "MIT",
