@@ -1,5 +1,5 @@
 # esri-redux
-> Simple boilerplate demonstrating how to setup a project using React, Redux, Flow (if wanted), and the Esri JavaScript API. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).  For the example without Flow, checkout the [`master-noflow`](https://github.com/Robert-W/esri-redux/tree/master-noflow) branch in this repository.
+> Simple boilerplate demonstrating how to setup a project using React, Redux, Flow (if wanted), and the Esri JavaScript API. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).  For the example without Flow, checkout the [`master-noflow`](https://github.com/Robert-W/esri-redux/tree/master-noflow) branch in this repository. For the example with Webpack, see [webpack](https://github.com/Robert-W/esri-redux/tree/webpack).
 
 ### Getting started
 This project requires [Node.js](https://nodejs.org/en/)
@@ -9,6 +9,9 @@ This project requires [Node.js](https://nodejs.org/en/)
 3. Open `http://localhost:3000` or `https://localhost:3000`
 
 `npm install` will install most dependencies and on `postinstall`, bower will install the rest.  This project has browser sync setup with live reload, so it will refresh as you develop.
+
+### Webpack version
+There is another version of this repo using Webpack with hot module replacement, it will soon become the master branch after more testing, but for now, you can access it at [https://github.com/Robert-W/esri-redux/tree/webpack](https://github.com/Robert-W/esri-redux/tree/webpack)
 
 ### NPM scripts
 `npm start`
