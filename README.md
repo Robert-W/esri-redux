@@ -18,9 +18,7 @@ This project requires [Node.js](https://nodejs.org/en/)
 > Tests all src files with eslint and runs flow against all the files that have opted in (via the /\* @flow \*/ comment).
 
 `npm run dist`
-> Generates an optimized build in the `dist` directory. It uses gulp-sass for sass files, gulp-replace to inject critical.css into the html, react-prerender to pre-render components and webpack to transpile, bundle, and minify the src. For more info, see [Building - Webpack](building-webpack).
-
-> rollup to transpile ES6 modules to AMD before RequireJS optimizer comes in to minify and bundle in built libraries.
+> Generates an optimized build in the `dist` directory. It uses gulp-sass for sass files, gulp-replace to inject critical.css into the html, react-prerender & babel to pre-render components and webpack to transpile, bundle, and minify the src. For more info, see [Building - Webpack](building-webpack).
 
 `npm run secure`
 > Same as `npm start` but uses HTTPS instead of HTTP. See [HTTPS](#HTTPS).
@@ -31,13 +29,16 @@ This project requires [Node.js](https://nodejs.org/en/)
 This project demonstrated the basics of Flow and how to set it up and test it. I will try to add more advanced Flow options and configurations as time goes on and I learn more about how Flow works. There are also other enhancements I would like to add, like live Flow checking with `linter-flow` in Atom.
 
 #### CSS Preprocessing - Sass
-This uses gulp-sass at the moment for portability, but it may be switched for the official sass Ruby gem at some point if it becomes necessary, for now this works.
+This uses gulp-sass at the moment for portability, but it may be switched for the official sass Ruby gem at some point if it becomes necessary, for now this works. Also since this uses browser-sync, if you reconfigure the `sass-build` gulp task to only process `app.scss` and put `critical.scss` into a separate task, browser-sync would inject the css into the page without reload.
 
 #### ES6 - Babel
 This uses Babel for transpiling the build, it also uses `React`, `es2015`, and `stage-0` presets so I can play with the latest ES6 features.  It will strip the Flow types from the code when it compiles to AMD so that there is no issue at runtime in the browser.
 
 #### Building - Webpack
--- COMING SOON --
+Webpack and dojo used to not play nice together, but then I saw [https://github.com/lobsteropteryx/esri-webpack](https://github.com/lobsteropteryx/esri-webpack) which cleverly handled the esri dependencies as externals and built to AMD.  Now we have Webpack and dojo working together.  This also uses hot module replacement with gulp/browser-sync so if you edit your components, it can swap them out on the fly without reloading the whole page.
+
+#### Prerendering - React-Prerender
+A while back I wrote this little utility to read in AMD modules in node and render the component to a string before injecting it into the html page.  This is honestly a bit ugly but it works.  I believe with any JavaScript UI framework you need to pre-render your content so the user does not have to wait for the library to load and the first render pass to show them your app, so this is an important part of the build process.  This may change if I discover a better way to do this.
 
 See [Resources](#resources)
 
@@ -62,7 +63,7 @@ If you run `npm secure` it will load a browser sync server using https but it wi
 * [React](https://facebook.github.io/react/)
 * [Redux](http://redux.js.org/)
 * [Flow](http://flowtype.org/)
-* [Webpack](http://webpack.org/)
+* [Webpack](https://webpack.github.io/)
 * [ArcGIS JavaScript API](https://js.arcgis.com)
 * [React-Prerender](https://github.com/Robert-W/react-prerender)
 * [Great talk from Yan Zhu on Security, HTTPS, and CSP](https://www.youtube.com/watch?v=CDdYu2CJ-SU)
