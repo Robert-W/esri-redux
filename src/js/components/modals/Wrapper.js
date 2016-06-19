@@ -60,19 +60,20 @@ export default class ModalWrapper extends Component {
 
   render () {
     const { visible, close, theme} = this.props;
+    let containerStyle = Object.assign({}, stylesheet.modalContainer);
     //- Build up the attributes
     const modalAttrs:any = {
-      style: {...stylesheet.modal}
+      style: stylesheet.modal
     };
 
     //- show or hide the container
-    stylesheet.modalContainer.display = visible ? 'block' : 'none';
+    containerStyle.display = visible ? 'block' : 'none';
 
     //- add a className if theme is provided
     if (theme) { modalAttrs.className = theme; }
 
     return (
-      <div style={stylesheet.modalContainer}>
+      <div style={containerStyle}>
         <div style={stylesheet.modalBackground} onClick={close} />
         <article {...modalAttrs}>
           <div title='close' style={stylesheet.close} onClick={close}>
