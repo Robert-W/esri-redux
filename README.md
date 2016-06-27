@@ -18,7 +18,7 @@ This project requires [Node.js](https://nodejs.org/en/)
 > Tests all src files with eslint and runs flow against all the files that have opted in (via the /\* @flow \*/ comment).
 
 `npm run dist`
-> Generates an optimized build in the `dist` directory. It uses gulp-sass for sass files, gulp-replace to inject critical.css into the html, react-prerender & babel to pre-render components and webpack to transpile, bundle, and minify the src. For more info, see [Building - Webpack](building-webpack).
+> Generates an optimized build in the `dist` directory. It uses gulp-sass for sass files, gulp-replace to inject critical.css into the html, react-prerender & babel to pre-render components and webpack to transpile, bundle, and minify the src. For more info, see [Building - Webpack](#building-webpack).
 
 `npm run secure`
 > Same as `npm start` but uses HTTPS instead of HTTP. See [HTTPS](#HTTPS).
