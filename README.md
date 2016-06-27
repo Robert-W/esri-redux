@@ -58,6 +58,7 @@ style-src 'self' js.arcgis.com 'unsafe-inline';
 
 ### HTTP/2 & HTTPS
 There are currently multiple options for HTTPS but only one for an HTTP/2 setup. The easiest way to run https is to run `npm run secure`.  It will load a browser sync server using https but will show as unsecure unless you have signed certs for localhost. The other option is to use [Caddy](https://caddyserver.com/).  It is really easy to install and configure.  This will run an HTTP/2 and HTTPS-enabled server for you once you generate some local self-signed certs.  Here is how to set that up.
+
 1. [Download Caddy](https://caddyserver.com/docs/getting-started), you may need [Go](https://golang.org/) installed.
 2. Setup local certs, you can run the command `npm run setupHTTPS`, this will prompt you for a few questions and then generate the certs for you, this does require `openssl` to be installed.
 3. Run `sudo caddy` to start the caddy server, you can see the server configuration in the `Caddyfile`.
