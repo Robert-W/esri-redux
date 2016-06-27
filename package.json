@@ -8,13 +8,17 @@
     "secure": "SERVER=https gulp serve & gulp start",
     "dist": "rm -rf dist;webpack -p --progress --config webpack.production.js;gulp dist;npm run prerender;",
     "test": "eslint src/js/**/*.js; flow check;",
-    "prerender": "BABEL_ENV=prerender babel src --out-dir build;gulp prerender;"
+    "prerender": "BABEL_ENV=prerender babel src --out-dir build;gulp prerender;",
+    "setupHTTPS": "openssl req -new -newkey rsa:2048 -sha256 -days 365 -nodes -x509 -keyout cert.key -out cert.crt"
   },
   "keywords": [
     "hot",
     "esri",
     "react",
     "redux",
+    "Caddy",
+    "https",
+    "http2",
     "es6",
     "flux",
     "flow",

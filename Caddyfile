@@ -1,0 +1,5 @@
+localhost:443
+tls cert.crt cert.key
+gzip { level 1 }
+browse
+ext .html
