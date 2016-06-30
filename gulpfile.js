@@ -2,7 +2,6 @@
 var webpackDevMiddleware = require('webpack-dev-middleware'),
     webpackHotMiddleware = require('webpack-hot-middleware'),
     webpackConfig = require('./webpack.config.js'),
-    prerender = require('react-prerender'),
     browserSync = require('browser-sync'),
     replace = require('gulp-replace'),
     htmlmin = require('gulp-htmlmin'),
@@ -36,20 +35,6 @@ var config = {
       collapseWhitespace: true,
       removeComments: true,
       minifyJS: true
-    }
-  },
-  prerender: {
-    target: path.join(__dirname, 'dist/index.html'),
-    component: 'js/components/App',
-    mount: '#react-mount',
-    requirejs: {
-      baseUrl: path.join(__dirname, 'build'),
-      paths: { 'js': 'js' },
-      map: {
-        ignorePatterns: [/esri\//, /dojo\//, /dijit\//],
-        moduleRoot: path.join(__dirname, 'dist/js'),
-        remapModule: 'js/config'
-      }
     }
   }
 };
@@ -112,10 +97,6 @@ gulp.task('html-inject-dist', ['sass-dist'], function () {
     .pipe(replace('<!-- inject:critical.css -->', '<style>' + fs.readFileSync(config.html.style.prod, 'utf8') + '</style>'))
     .pipe(htmlmin(config.html.minOptions))
     .pipe(gulp.dest(config.html.dist));
-});
-
-gulp.task('prerender', function () {
-  prerender(config.prerender);
 });
 
 gulp.task('start', ['sass-watch', 'html-inject-build', 'html-watch']);
