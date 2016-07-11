@@ -8,7 +8,7 @@ This project requires [Node.js](https://nodejs.org/en/)
 2. `npm start` or `npm secure`
 3. Open `http://localhost:3000` or `https://localhost:3000`
 
-`npm install` will install most dependencies and on `postinstall`, bower will install the rest.  This project has browser sync setup with live reload, so it will refresh as you develop.
+This project has browser sync setup with live reload, so it will refresh as you develop.
 
 ### Additional Branches
 1. [`master-noflow`](https://github.com/Robert-W/esri-redux/tree/master-noflow) - Same as this branch but without Flow Type checker implemented.
