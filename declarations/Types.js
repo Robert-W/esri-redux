@@ -15,6 +15,6 @@ declare type Dispatch = (action: ReduxAction) => void;
 declare type ReduxAsyncAction = (dispatch: Dispatch) => void;
 
 // Redux Middleware
-declare function Middleware (store: any):NextMiddleware;
+declare function Middleware (store: any): NextMiddleware;
 declare function NextMiddleware (next: Function): ActionCreator;
 declare function ActionCreator (action: ReduxAction): NextMiddleware;

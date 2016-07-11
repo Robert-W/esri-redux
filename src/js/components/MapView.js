@@ -19,10 +19,9 @@ type AppState = {
 export default class Map extends Component {
 
   displayName: 'Map';
-  state: AppState;
-  unsubscribe: Function;
 
   state: AppState = appStore.getState();
+  unsubscribe: Function;
   view: EsriView = {};
 
   componentDidMount() {
