@@ -8,6 +8,10 @@ This project requires [Node.js](https://nodejs.org/en/)
 2. `npm start` or `npm secure`
 3. Open `http://localhost:3000` or `https://localhost:3000`
 
+### Additional Branches
+1. `master-noflow` - Same as this branch but without Flow Type checker implemented.
+2. `material-ui` - Branch very similar to this, but demonstrating that with Webpack, we can incorporate nice UI libraries easily. Check out the documentation on [material-ui](http://www.material-ui.com/) to see what else you can do with this branch as a starting point.
+
 `npm install` will install most dependencies and on `postinstall`, bower will install the rest.  This project has browser sync setup with live reload, so it will refresh as you develop.
 
 ### NPM scripts
