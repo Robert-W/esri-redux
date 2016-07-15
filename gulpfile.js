@@ -57,7 +57,7 @@ gulp.task('serve', function () {
       baseDir: config.server.baseDir,
       middleware: [
         webpackDevMiddleware(compiler, {
-          publicPath: webpackConfig.output.publicPath,
+          // publicPath: webpackConfig.output.publicPath,
           stats: { colors: true }
         }),
         webpackHotMiddleware(compiler)
@@ -99,5 +99,7 @@ gulp.task('html-inject-dist', ['sass-dist'], function () {
     .pipe(gulp.dest(config.html.dist));
 });
 
-gulp.task('start', ['sass-watch', 'html-inject-build', 'html-watch']);
-gulp.task('dist', ['html-inject-dist']);
+gulp.task('start', ['sass-watch']);
+// gulp.task('start', ['sass-watch', 'html-inject-build', 'html-watch']);
+gulp.task('dist', ['sass-dist']);
+// gulp.task('dist', ['html-inject-dist']);

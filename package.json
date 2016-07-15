@@ -6,7 +6,7 @@
   "scripts": {
     "start": "gulp serve & gulp start",
     "secure": "SERVER=https gulp serve & gulp start",
-    "dist": "rm -rf dist;NODE_ENV=production webpack -p --progress;gulp dist;npm run prerender;",
+    "dist": "rm -rf dist;NODE_ENV=production webpack -p --progress --profile;gulp dist;npm run prerender;",
     "test": "eslint src/js/**/*.js; flow check;",
     "prerender": "NODE_ENV=production node ./prerender;"
   },
@@ -54,6 +54,7 @@
     "gulp-htmlmin": "^2.0.0",
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.3.2",
+    "html-webpack-plugin": "^2.22.0",
     "react-hot-loader": "^1.3.0",
     "requirejs": "^2.2.0",
     "webpack": "^1.13.1",

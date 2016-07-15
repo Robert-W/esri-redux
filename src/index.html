@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' js.arcgis.com 'unsafe-inline' 'unsafe-eval';style-src 'self' js.arcgis.com 'unsafe-inline';">
     <meta charset="utf-8">
+    <link rel="stylesheet" href="css/critical.css">
     <!-- inject:critical.css -->
   </head>
   <body>
@@ -101,7 +102,7 @@
           { name: 'js', location: makePath(base, 'js') }
         ],
         deps: ['dojo/domReady!'],
-        callback: function () { require(['js/main']); }
+        callback: function () { require(['<%= htmlWebpackPlugin.files.js %>']); }
       };
     </script>
     <script src='//js.arcgis.com/4.0/init.js' async></script>

@@ -1,12 +1,35 @@
 /* eslint-disable */
 var production = process.env.NODE_ENV === 'production';
-var helpers = require('./webpack.helpers');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
 
-var config = {
-  externals: [helpers.esriPackages],
-  resolve: { alias: helpers.modules },
+//- Helper functions
+var isEsriPackage = function isEsriPackage (module) {
+  return /^dojo/.test(module) || /^dojox/.test(module) || /^dijit/.test(module) || /^esri/.test(module);
+};
+
+//- Base Webpack Config
+var webpackconfig = {
+  entry: [
+    'webpack/hot/dev-server',
+    'webpack-hot-middleware/client',
+    path.join(__dirname, 'src/js/main')
+  ],
+  output: {
+    path: path.resolve('build'),
+    filename: 'js/[name].[hash].js',
+    libraryTarget: 'amd'
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      filename: 'index.html',
+      inject: false
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
   module: {
     loaders: [{
       test: /\.js?$/,
@@ -17,56 +40,56 @@ var config = {
         plugins: ['transform-runtime', 'babel-plugin-transform-flow-strip-types']
       }
     }]
+  },
+  externals: [function (context, request, callback) {
+    if (isEsriPackage(request)) { callback(null, 'amd ' + request); }
+    else { callback(); }
+  }],
+  resolve: {
+    alias: {
+      'js': path.join(__dirname, 'src/js')
+    }
   }
 };
 
+
+
 if (production) {
-  // Setup for production
-  // Configure entry
-  config.entry = path.join(__dirname, 'src/js/main');
-  // Configure output and public path for hot module
-  config.output = {
-    path: path.resolve('dist/js'),
-    filename: 'main.js',
+  webpackconfig.entry = path.join(__dirname, 'src/js/main');
+  webpackconfig.output = {
+    path: path.resolve('dist'),
+    filename: 'js/[name].[hash].js',
     libraryTarget: 'amd'
   };
-  // Add Environment variables via plugins
-  config.plugins = [
+  // Add Environment variables for production so webpack can optimize more
+  webpackconfig.plugins = [
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': '"production"'
       }
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      inject: false,
+      minify: {
+        collapseWhitespace: true,
+        removeComments: true,
+        minifyCSS: true,
+        minifyJS: true
+      }
     })
   ];
 } else {
-  // Setup for development
-  config.debug = true;
-  config.cache = true;
-  config.devtool = 'source-map';
-  // Configure entry
-  config.entry = [
-    'webpack/hot/dev-server',
-    'webpack-hot-middleware/client',
-    path.join(__dirname, 'src/js/main')
-  ];
-  // Configure output and public path for hot module
-  config.output = {
-    path: path.resolve('build/js'),
-    filename: 'main.js',
-    publicPath: '/js/',
-    libraryTarget: 'amd'
-  };
+  webpackconfig.debug = webpackconfig.cache = true;
+  webpackconfig.devtool = 'source-map';
+
   // Add the hot loader as the first loader
-  config.module.loaders.unshift({
+  webpackconfig.module.loaders.unshift({
     test: /\.js?$/,
     loader: 'react-hot',
     exclude: /(node_modules|build)/
   });
-  // Add some plugins
-  config.plugins = [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
-  ];
+
 }
 
-module.exports = config;
+module.exports = webpackconfig;

@@ -43,6 +43,7 @@ var config = {
 /**
 * @description
 * 1. Configure and run webpack in production mode to create a minified build and output to temp.js
+* 1. (Cont.) - Remove the HTML Text Plugin so it does not export an additional HTML file
 * 2. Create a map object that remaps all excluded modules from the bundle stats to itself, this allows us to require App
 * even though some of the dependencies in our code are not present until runtime in the browser
 * 3. Configure requirejs, I need this so I can remap modules
@@ -56,6 +57,9 @@ var config = {
 webpackconfig.entry = config.webpack.entry;
 webpackconfig.output.path = config.webpack.outputPath;
 webpackconfig.output.filename = config.webpack.outputFilename;
+// Pop off the HTML Plugin
+webpackconfig.plugins.pop();
+// Run webpack to generate the JS Bundle for prerendering
 var compiler = webpack(webpackconfig);
 compiler.run(function (err, stats) {
   if (err) { throw err; }
