@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "scripts": {
     "start": "gulp serve",
-    "secure": "SERVER=https gulp serve & gulp start",
+    "secure": "SERVER=https gulp serve",
     "dist": "rm -rf dist;NODE_ENV=production webpack -p --progress --profile;npm run prerender;",
     "test": "eslint src/js/**/*.js; flow check;",
     "prerender": "NODE_ENV=production node ./prerender;"
