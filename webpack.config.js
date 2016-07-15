@@ -1,5 +1,5 @@
 /* eslint-disable */
-var production = process.env.NODE_ENV === 'production';
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var webpack = require('webpack');
 var path = require('path');
@@ -9,7 +9,7 @@ var isEsriPackage = function isEsriPackage (module) {
   return /^dojo/.test(module) || /^dojox/.test(module) || /^dijit/.test(module) || /^esri/.test(module);
 };
 
-//- Base Webpack Config
+//- Development Webpack Config
 var webpackconfig = {
   entry: [
     'webpack/hot/dev-server',
@@ -17,7 +17,7 @@ var webpackconfig = {
     path.join(__dirname, 'src/js/main')
   ],
   output: {
-    path: path.resolve('build'),
+    path: path.resolve('dist'),
     filename: 'js/[name].[hash].js',
     libraryTarget: 'amd'
   },
@@ -47,22 +47,17 @@ var webpackconfig = {
   }],
   resolve: {
     alias: {
-      'js': path.join(__dirname, 'src/js')
+      'js': path.join(__dirname, 'src/js'),
+      'css': path.join(__dirname, 'src/css')
     }
   }
 };
 
-
-
-if (production) {
+if (process.env.NODE_ENV === 'production') {
+  // Override entry and plugins for production
   webpackconfig.entry = path.join(__dirname, 'src/js/main');
-  webpackconfig.output = {
-    path: path.resolve('dist'),
-    filename: 'js/[name].[hash].js',
-    libraryTarget: 'amd'
-  };
-  // Add Environment variables for production so webpack can optimize more
   webpackconfig.plugins = [
+    new ExtractTextPlugin('css/critical.css'),
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': '"production"'
@@ -79,17 +74,27 @@ if (production) {
       }
     })
   ];
+  // Add Sass Loaders, Extract critical and let below the fold content get injected as style tags
+  webpackconfig.module.loaders = [{
+    test: /critical\.scss$/,
+    loader: ExtractTextPlugin.extract(['css', 'sass'])
+  }, {
+    test: /app\.scss$/,
+    loaders: ['style', 'css', 'sass']
+  }].concat(webpackconfig.module.loaders);
 } else {
+  // Add the remaining development configurations
   webpackconfig.debug = webpackconfig.cache = true;
   webpackconfig.devtool = 'source-map';
-
   // Add the hot loader as the first loader
-  webpackconfig.module.loaders.unshift({
+  webpackconfig.module.loaders = [{
     test: /\.js?$/,
     loader: 'react-hot',
     exclude: /(node_modules|build)/
-  });
-
+  }, {
+    test: /\.scss$/,
+    loaders: ['style', 'css', 'sass']
+  }].concat(webpackconfig.module.loaders);
 }
 
 module.exports = webpackconfig;

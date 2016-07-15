@@ -3,8 +3,11 @@ import App from 'js/components/App';
 import Dom from 'react-dom';
 import React from 'react';
 
+//- Get webpack to extract this and use it to generate critical.css
+require('css/critical.scss');
+
 // Lazy load css
-loadCSS('css/app.css');
+require('css/app.scss');
 loadCSS('//js.arcgis.com/4.0/esri/css/main.css');
 
 // Apply any default configurations here
