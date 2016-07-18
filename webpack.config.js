@@ -1,13 +1,9 @@
 /* eslint-disable */
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var utils = require('./webpack.utils');
 var webpack = require('webpack');
 var path = require('path');
-
-//- Helper functions
-var isEsriPackage = function isEsriPackage (module) {
-  return /^dojo/.test(module) || /^dojox/.test(module) || /^dijit/.test(module) || /^esri/.test(module);
-};
 
 //- Development Webpack Config
 var webpackconfig = {
@@ -20,6 +16,16 @@ var webpackconfig = {
     path: path.resolve('dist'),
     filename: 'js/[name].[hash].js',
     libraryTarget: 'amd'
+  },
+  externals: [function (context, request, callback) {
+    if (utils.shouldBeExcluded(request)) { callback(null, 'amd ' + request); }
+    else { callback(); }
+  }],
+  resolve: {
+    alias: {
+      'js': path.join(__dirname, 'src/js'),
+      'css': path.join(__dirname, 'src/css')
+    }
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -40,16 +46,6 @@ var webpackconfig = {
         plugins: ['transform-runtime', 'babel-plugin-transform-flow-strip-types']
       }
     }]
-  },
-  externals: [function (context, request, callback) {
-    if (isEsriPackage(request)) { callback(null, 'amd ' + request); }
-    else { callback(); }
-  }],
-  resolve: {
-    alias: {
-      'js': path.join(__dirname, 'src/js'),
-      'css': path.join(__dirname, 'src/css')
-    }
   }
 };
 
@@ -58,11 +54,8 @@ if (process.env.NODE_ENV === 'production') {
   webpackconfig.entry = path.join(__dirname, 'src/js/main');
   webpackconfig.plugins = [
     new ExtractTextPlugin('css/critical.css'),
-    new webpack.DefinePlugin({
-      'process.env': {
-        'NODE_ENV': '"production"'
-      }
-    }),
+    new webpack.DefinePlugin({ 'process.env': {'NODE_ENV': '"production"'}}),
+    new utils.InlineCriticalStyle('css/critical.css'),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: false,
@@ -74,7 +67,7 @@ if (process.env.NODE_ENV === 'production') {
       }
     })
   ];
-  // Add Sass Loaders, Extract critical and let below the fold content get injected as style tags
+  // Add Sass Loaders, Extract critical to be inlined into the html file and let below the fold content get injected as style tags
   webpackconfig.module.loaders = [{
     test: /critical\.scss$/,
     loader: ExtractTextPlugin.extract(['css', 'sass'])
