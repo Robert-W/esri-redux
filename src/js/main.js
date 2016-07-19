@@ -16,7 +16,7 @@ loadCSS('//js.arcgis.com/4.0/esri/css/main.css');
 // Initialize the app
 const reactMountPoint = document.getElementById('react-mount');
 Dom.render(<App />, reactMountPoint);
-// There is a weird bug on mobile with that needs to have touchmove prevented
+// There is a weird issue on iOS(maybe android too, not tested) that needs to have touchmove prevented
 reactMountPoint.addEventListener('touchmove', (evt) => {
   evt.preventDefault();
 }, false);
