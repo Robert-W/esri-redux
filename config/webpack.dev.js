@@ -20,7 +20,7 @@ module.exports = {
     path.join(root, 'src/js/main')
   ],
   output: {
-    path: path.join(root, 'dist'),
+    path: path.join(root, 'public'),
     filename: 'js/[name].[hash].js',
     libraryTarget: 'amd'
   },
