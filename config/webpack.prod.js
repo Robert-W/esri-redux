@@ -54,8 +54,6 @@ module.exports = {
     return [autoprefixer];
   },
   plugins: [
-    new ExtractTextPlugin('css/critical.css'),
-    new InlineStylePlugin('css/critical.css'),
     new webpack.DefinePlugin({ 'process.env': {'NODE_ENV': '"production"'}}),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
@@ -72,6 +70,8 @@ module.exports = {
         screw_ie8: true
       }
     }),
+    new ExtractTextPlugin('css/critical.css'),
+    new InlineStylePlugin('css/critical.css'),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       inject: false,
