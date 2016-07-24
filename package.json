@@ -2,13 +2,12 @@
   "name": "esri-redux",
   "version": "1.0.0",
   "description": "Simple boilerplate demonstrating how to setup a project using React, Redux, Flow, and the Esri JavaScript API.",
-  "main": "gulpfile.js",
+  "main": "scripts/start.js",
   "scripts": {
-    "start": "gulp serve",
-    "secure": "SERVER=https gulp serve",
-    "dist": "rm -rf dist;NODE_ENV=production webpack -p --progress --profile;npm run prerender;",
+    "start": "node scripts/start",
+    "dist": "rm -rf dist;node scripts/build;node scripts/prerender;",
     "test": "eslint src/js/**/*.js; flow check;",
-    "prerender": "NODE_ENV=production node ./prerender;"
+    "prerender": "node ./prerender;"
   },
   "keywords": [
     "hot",
@@ -36,6 +35,7 @@
     "redux": "^3.5.2"
   },
   "devDependencies": {
+    "autoprefixer": "^6.3.7",
     "babel-core": "^6.9.1",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
@@ -52,9 +52,9 @@
     "eslint-plugin-react": "^5.2.2",
     "extract-text-webpack-plugin": "^1.0.1",
     "flow-bin": "^0.27.0",
-    "gulp": "^3.9.1",
     "html-webpack-plugin": "^2.22.0",
     "node-sass": "^3.8.0",
+    "postcss-loader": "^0.9.1",
     "react-hot-loader": "^1.3.0",
     "requirejs": "^2.2.0",
     "sass-loader": "^4.0.0",

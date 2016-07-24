@@ -1,11 +1,13 @@
-var reactDomServer = require('react-dom/server');
-var webpackconfig = require('./webpack.config');
-var requirejs = require('requirejs');
-var webpack = require('webpack');
-var cheerio = require('cheerio');
-var react = require('react');
-var path = require('path');
-var fs = require('fs');
+const webpackconfig = require('../config/webpack.prod');
+const reactDomServer = require('react-dom/server');
+const requirejs = require('requirejs');
+const webpack = require('webpack');
+const cheerio = require('cheerio');
+const react = require('react');
+const path = require('path');
+const fs = require('fs');
+
+const root = process.cwd();
 
 /**
 * @namespace
@@ -22,21 +24,21 @@ var fs = require('fs');
 * @property {string} react.mount - query to find DOM node to mount entry to
 * @property {string} react.target - html file to read in inject component markup into
 */
-var config = {
-  temp: path.join(__dirname, './temp.js'),
+const config = {
+  temp: path.join(root, 'temp.js'),
   filters: [/esri\//, /dojo\//, /dijit\//],
   webpack: {
-    entry: path.join(__dirname, 'src/js/components/App'),
-    outputPath: path.resolve('./'),
+    entry: path.join(root, 'src/js/components/App'),
+    outputPath: root,
     outputFilename: 'temp.js'
   },
   rjs: {
     map: function (map) { return { '*': map }; },
-    remap: 'temp' // Same as outputPath + outputFilename minus extension
+    remap: path.join(root, 'temp.js') // Same as outputPath + outputFilename minus extension
   },
   react: {
     mount: '#react-mount',
-    target: path.join(__dirname, 'dist/index.html')
+    target: path.join(root, 'dist/index.html')
   }
 };
 
@@ -59,6 +61,10 @@ webpackconfig.output.path = config.webpack.outputPath;
 webpackconfig.output.filename = config.webpack.outputFilename;
 // Pop off the HTML Plugin
 webpackconfig.plugins.pop();
+
+console.log('\x1B[1mStarting prerender script\x1B[22m');
+console.log('-------------------------');
+
 // Run webpack to generate the JS Bundle for prerendering
 var compiler = webpack(webpackconfig);
 compiler.run(function (err, stats) {
@@ -77,13 +83,15 @@ compiler.run(function (err, stats) {
   requireconfig.map = config.rjs.map(map);
   requirejs(requireconfig);
   //- 4
-  var Component = requirejs(config.webpack.outputFilename);
-  var markup = reactDomServer.renderToString(react.createElement(Component.default));
+  const Component = requirejs(config.webpack.outputFilename);
+  const markup = reactDomServer.renderToString(react.createElement(Component.default));
   //- 5
-  var file = fs.readFileSync(config.react.target, 'utf-8');
-  var $ = cheerio.load(file);
+  const file = fs.readFileSync(config.react.target, 'utf-8');
+  const $ = cheerio.load(file);
   $(config.react.mount).append(markup);
   //- 6
   fs.writeFileSync(config.react.target, $.html());
   fs.unlinkSync(config.temp);
+  console.log('\x1B[1mPrerender script completed\x1B[22m');
+  console.log('--------------------------');
 });
