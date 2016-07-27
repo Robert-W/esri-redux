@@ -5,8 +5,7 @@
 This project requires [Node.js](https://nodejs.org/en/)
 
 1. `npm install`
-2. `npm start` or `npm secure`
-3. Open `http://localhost:3000` or `https://localhost:3000`
+2. `npm start`
 
 This project has browser sync setup with live reload, so it will refresh as you develop.
 
