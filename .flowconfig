@@ -26,3 +26,10 @@ module.name_mapper='.*\(.scss\|.png\)'->'<PROJECT_ROOT>/src/js/config.js'
 esproposal.decorators=ignore
 esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable
+##
+# Escape hatches for flow
+##
+# Suppress type, example: `function scooby (doo: $FlowIgnore) {...}`
+suppress_type=$FlowIgnore
+# Suppress comment, example: // $FlowSuppressError: Next line wont pass flow because ...
+suppress_comment= \\(.\\|\n\\)*\\$FlowSuppressError
