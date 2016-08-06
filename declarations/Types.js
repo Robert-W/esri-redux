@@ -9,6 +9,7 @@ declare type ReduxAction = {
   data?: any
 };
 
+//- Dispatch function type
 declare type Dispatch = (action: ReduxAction) => void;
 
 // Async Redux Action

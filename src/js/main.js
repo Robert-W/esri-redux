@@ -10,7 +10,7 @@ import 'css/critical.scss';
 //- Lazy load esri css
 loadCSS('//js.arcgis.com/4.0/esri/css/main.css');
 
-// Apply any default configurations here
+// Apply any default configurations here if necessary
 
 
 // Initialize the app

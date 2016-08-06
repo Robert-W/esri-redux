@@ -13,6 +13,7 @@ import EsriMap from 'esri/Map';
 type AppState = {
   locateModalVisible: bool,
   shareModalVisible: bool,
+  itemInfo: Object,
   viewReady: bool
 };
 
