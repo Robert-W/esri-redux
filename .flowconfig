@@ -1,18 +1,28 @@
 [include]
 src/**/*.js
 [ignore]
+# Contains the non-standard promise method Done
 .*/node_modules/fbjs/.*
-.*/node_modules/madge/.*
 [libs]
 declarations
 [options]
+##
+# Map modules configured in webpacks resolve.alias back to their original source
+##
 module.name_mapper='js'->'<PROJECT_ROOT>/src/js/'
-module.name_mapper='libs'->'<PROJECT_ROOT>/build/libs/'
-module.name_mapper='redux'->'<PROJECT_ROOT>/node_modules/redux/dist/redux'
-module.name_mapper='react'->'<PROJECT_ROOT>/node_modules/react/react'
-module.name_mapper='react-dom'->'<PROJECT_ROOT>/node_modules/react-dom/react-dom'
-module.name_mapper='esri\/.*'->'<PROJECT_ROOT>/src/js/config.js'
-module.name_mapper='dojo\/.*'->'<PROJECT_ROOT>/src/js/config.js'
-module.name_mapper='dijit\/.*'->'<PROJECT_ROOT>/src/js/config.js'
+module.name_mapper='css'->'<PROJECT_ROOT>/src/css/'
+##
+# Map esri/dojo modules to a non-flow checked file so they do not throw module not found errors
+##
+module.name_mapper='esri\/.*'->'<PROJECT_ROOT>/src/js/main.js'
+module.name_mapper='dojo\/.*'->'<PROJECT_ROOT>/src/js/main.js'
+##
+# Flow cant parse these non-standard imports, so map them to a non-flow checked file
+##
+module.name_mapper='.*\(.scss\|.png\)'->'<PROJECT_ROOT>/src/js/config.js'
+##
+# Configure certain es6 features
+##
+esproposal.decorators=ignore
 esproposal.class_static_fields=enable
 esproposal.class_instance_fields=enable

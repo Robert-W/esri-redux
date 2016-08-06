@@ -5,7 +5,6 @@
 */
 function InlineStyle (filepath) {
   this.filepath = filepath || 'css/critical.css';
-  this.modulepath = 'js/components/App';
 }
 
 InlineStyle.prototype.apply = function (compiler) {

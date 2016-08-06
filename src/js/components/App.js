@@ -3,6 +3,7 @@ import MapView from 'js/components/MapView';
 import Header from 'js/components/Header';
 import React, {Component} from 'react';
 import {text} from 'js/config';
+import 'css/app.scss';
 
 export default class App extends Component {
 

@@ -1,3 +1,4 @@
+/* @flow */
 export const initialState = {
   locateModalVisible: false,
   shareModalVisible: false,

@@ -4,10 +4,10 @@ import Dom from 'react-dom';
 import React from 'react';
 
 //- Get webpack to extract this and use it to generate critical.css
-require('css/critical.scss');
+//- For production, config/inline-style.js will inline this into html via html-webpack-plugin
+import 'css/critical.scss';
 
-// Lazy load css
-require('css/app.scss');
+//- Lazy load esri css
 loadCSS('//js.arcgis.com/4.0/esri/css/main.css');
 
 // Apply any default configurations here
