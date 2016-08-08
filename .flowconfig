@@ -4,7 +4,7 @@ src/**/*.js
 # Contains the non-standard promise method Done
 .*/node_modules/fbjs/.*
 [libs]
-declarations
+declarations/
 [options]
 ##
 # Map modules configured in webpacks resolve.alias back to their original source
@@ -14,12 +14,12 @@ module.name_mapper='css'->'<PROJECT_ROOT>/src/css/'
 ##
 # Map esri/dojo modules to a non-flow checked file so they do not throw module not found errors
 ##
-module.name_mapper='esri\/.*'->'<PROJECT_ROOT>/src/js/config.js'
-module.name_mapper='dojo\/.*'->'<PROJECT_ROOT>/src/js/config.js'
+module.name_mapper='esri\/.*'->'<PROJECT_ROOT>/src/js/main.js'
+module.name_mapper='dojo\/.*'->'<PROJECT_ROOT>/src/js/main.js'
 ##
 # Flow cant parse these non-standard imports, so map them to a non-flow checked file
 ##
-module.name_mapper='.*\(.scss\|.png\)'->'<PROJECT_ROOT>/src/js/config.js'
+module.name_mapper='.*\(.scss\|.png\)'->'<PROJECT_ROOT>/src/js/main.js'
 ##
 # Configure certain es6 features
 ##

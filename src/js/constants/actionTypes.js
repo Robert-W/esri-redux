@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 export const
   VIEW_READY:string = 'VIEW_READY',
   TOGGLE_LOCATE:string = 'TOGGLE_LOCATE',

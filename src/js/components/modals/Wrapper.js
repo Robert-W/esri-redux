@@ -1,7 +1,7 @@
-/* @flow */
+// @flow
 import React, { Component } from 'react';
 
-const stylesheet:any = {
+const stylesheet:{[key:string]: Object} = {
   modalContainer: {
     position: 'fixed',
     height: '100%',
@@ -60,9 +60,9 @@ export default class ModalWrapper extends Component {
 
   render () {
     const { visible, close, theme} = this.props;
-    let containerStyle = Object.assign({}, stylesheet.modalContainer);
+    let containerStyle:Object = Object.assign({}, stylesheet.modalContainer);
     //- Build up the attributes
-    const modalAttrs:any = {
+    const modalAttrs:Object = {
       style: stylesheet.modal
     };
 

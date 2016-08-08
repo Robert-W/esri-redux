@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import MapView from 'js/components/MapView';
 import Header from 'js/components/Header';
 import React, {Component} from 'react';

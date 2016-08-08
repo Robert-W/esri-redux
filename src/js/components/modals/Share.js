@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import {toggleShareModal} from 'js/actions/mapActions';
 import Wrapper from 'js/components/modals/Wrapper';
 import React, { Component } from 'react';

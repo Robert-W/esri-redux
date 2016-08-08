@@ -12,12 +12,23 @@
   },
   "globals": {
     "require": true,
-    "Dispatch": true,
     "EsriView": true,
+    "AppState": true,
+    "State": true,
+    "Action": true,
+    "AsyncAction": true,
+    "Reducer": true,
+    "BaseDispatch": true,
+    "Dispatch": true,
+    "ActionCreator": true,
+    "MiddlewareAPI": true,
     "Middleware": true,
-    "ReduxAction": true,
-    "NextMiddleware": true,
-    "ReduxAsyncAction": true
+    "Store": true,
+    "StoreCreator": true,
+    "StoreEnhancer": true,
+    "ActionCreatorOrObjectOfACs": true,
+    "Reducers": true,
+    "Redux": true
   },
   "plugins": [
     "react"

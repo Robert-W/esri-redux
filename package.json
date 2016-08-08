@@ -7,7 +7,7 @@
     "start": "node scripts/start",
     "dist": "rm -rf dist;node scripts/build;node scripts/prerender;",
     "test": "eslint src/js/**/*.js; flow check;",
-    "prerender": "node ./prerender;"
+    "coverage": "flow coverage --color src/js/components/App.js;"
   },
   "keywords": [
     "hot",

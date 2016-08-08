@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 export function loadCSS (url: string):void {
   const stylesheet = document.createElement('link');
   stylesheet.rel = 'stylesheet';

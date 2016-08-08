@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 import {toggleShareModal, toggleLocateModal} from 'js/actions/mapActions';
 import React, {Component} from 'react';
 import appStore from 'js/appStore';
