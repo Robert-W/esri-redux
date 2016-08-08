@@ -3,6 +3,7 @@ src/**/*.js
 [ignore]
 # Contains the non-standard promise method Done
 .*/node_modules/fbjs/.*
+declarations/
 [libs]
 declarations/
 [options]
