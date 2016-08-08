@@ -6,6 +6,7 @@ import React from 'react';
 //- Get webpack to extract this and use it to generate critical.css
 //- For production, config/inline-style.js will inline this into html via html-webpack-plugin
 import 'css/critical.scss';
+import 'css/app.scss';
 
 //- Lazy load esri css
 loadCSS('//js.arcgis.com/4.0/esri/css/main.css');
