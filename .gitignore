@@ -1,5 +1,4 @@
 # Ignore the build and dist directories
-build
 dist
 
 # Ignore these, just do it
