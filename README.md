@@ -29,6 +29,15 @@ This project demonstrated the basics of Flow and how to set it up and test it. I
 #### CSS Preprocessing - Sass
 This uses a sass loader in webpack so you can just import your scss in your components. Webpack will inject these as style tags in dev mode so you get live reload of css. In production, it will inline `critical.scss` and append `app.scss` into your html for you.
 
+#### Image import
+To import images in you project first you need to import image from 'images' folder
+
+`import logoImg from 'images/logo.svg';`
+
+and reference in code
+
+`<img src={logoImg}/>`
+
 #### ES6 - Babel
 This uses Babel for transpiling the build, it also uses `React`, `es2015`, and `stage-0` presets so I can play with the latest ES6 features.  It will strip the Flow types from the code when it compiles to AMD so that there is no issue at runtime in the browser.
 

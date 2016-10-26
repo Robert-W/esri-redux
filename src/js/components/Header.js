@@ -1,5 +1,6 @@
 // @flow
 import React, {Component} from 'react';
+import logoImg from 'images/logo.svg';
 
 type HeaderProps = {
   title: string,
@@ -15,7 +16,10 @@ export default class Header extends Component {
 
     return (
       <div className='app-header'>
-        <h1 className='app-title'>{title}</h1>
+        <h1 className='app-title'>
+          {title}
+          <img className="app-logo" src={logoImg} alt=""/>
+        </h1>
         <h2 className='app-subtitle'>{subtitle}</h2>
       </div>
     );
