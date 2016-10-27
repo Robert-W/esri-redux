@@ -34,7 +34,8 @@ module.exports = {
   resolve: {
     alias: {
       'js': path.join(root, 'src/js'),
-      'css': path.join(root, 'src/css')
+      'css': path.join(root, 'src/css'),
+      'images': path.join(root, 'src/images')
     }
   },
   plugins: [
@@ -62,6 +63,12 @@ module.exports = {
         presets: ['es2015', 'react', 'stage-0'],
         plugins: ['transform-runtime', 'babel-plugin-transform-flow-strip-types']
       }
+    }, {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      loaders: [
+        'file?hash=sha512&digest=hex&name=[hash].[ext]',
+        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+      ]
     }]
   }
 };

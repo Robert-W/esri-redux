@@ -23,7 +23,8 @@ module.exports = {
   resolve: {
     alias: {
       'js': path.join(root, 'src/js'),
-      'css': path.join(root, 'src/css')
+      'css': path.join(root, 'src/css'),
+      'images': path.join(root, 'src/images')
     }
   },
   externals: [function (context, request, callback) {
@@ -48,6 +49,10 @@ module.exports = {
     }, {
       test: /app\.scss$/,
       loaders: ['style', 'css', 'postcss', 'sass']
+    }, {
+      test: /\.(jpg|png|svg)$/,
+      loader: 'url?limit=25000',
+      include: path.images
     }]
   },
   postcss: function () {
