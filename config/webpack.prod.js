@@ -12,7 +12,6 @@ const weCantMake = function weCantMake (request) {
 };
 
 module.exports = {
-  progress: true,
   profile: true,
   entry: path.join(root, 'src/js/main'),
   output: {
@@ -35,9 +34,9 @@ module.exports = {
     }
   }],
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js?$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       exclude: /(node_modules|build)/,
       query: {
         presets: ['es2015', 'react', 'stage-0'],
@@ -45,23 +44,20 @@ module.exports = {
       }
     }, {
       test: /critical\.scss$/,
-      loader: ExtractTextPlugin.extract(['css', 'postcss', 'sass'])
+      use: ExtractTextPlugin.extract(['css-loader', 'postcss-loader', 'sass-loader'])
     }, {
       test: /app\.scss$/,
-      loaders: ['style', 'css', 'postcss', 'sass']
+      loaders: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader']
     }, {
       test: /\.(jpg|png|svg)$/,
-      loader: 'url?limit=25000',
+      loader: 'url-loader?limit=25000',
       include: path.images
     }]
   },
-  postcss: function () {
-    return [autoprefixer];
-  },
   plugins: [
     new webpack.DefinePlugin({ 'process.env': {'NODE_ENV': '"production"'}}),
+    new webpack.LoaderOptionsPlugin({ options: { postcss: [autoprefixer] }}),
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         screw_ie8: true,

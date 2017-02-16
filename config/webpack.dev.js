@@ -12,7 +12,6 @@ const weCantMake = function weCantMake (request) {
 
 module.exports = {
   devtool: 'source-map',
-  debug: true,
   cache: true,
   entry: [
     'webpack/hot/dev-server',
@@ -45,19 +44,19 @@ module.exports = {
       inject: false
     }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
-    loaders: [{
+    rules: [{
       test: /\.js?$/,
-      loader: 'react-hot',
+      loader: 'react-hot-loader',
       exclude: /(node_modules|build)/
     }, {
       test: /\.scss$/,
-      loaders: ['style', 'css', 'sass']
+      loaders: ['style-loader', 'css-loader', 'sass-loader']
     }, {
       test: /\.js?$/,
-      loader: 'babel',
+      loader: 'babel-loader',
       exclude: /(node_modules)/,
       query: {
         presets: ['es2015', 'react', 'stage-0'],
@@ -66,8 +65,8 @@ module.exports = {
     }, {
       test: /\.(jpe?g|png|gif|svg)$/i,
       loaders: [
-        'file?hash=sha512&digest=hex&name=[hash].[ext]',
-        'image-webpack?bypassOnDebug&optimizationLevel=7&interlaced=false'
+        'file-loader?hash=sha512&digest=hex&name=[hash].[ext]',
+        'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
       ]
     }]
   }

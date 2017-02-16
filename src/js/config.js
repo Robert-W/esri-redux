@@ -12,7 +12,7 @@ export const text:{[key:string]: string} = {
 };
 
 export const mapOptions:{[key:string]: any} = {
-  basemap: 'streets-navigation-vector'
+  basemap: 'streets-vector'
 };
 
 export const viewOptions:{[key:string]: any} = {
