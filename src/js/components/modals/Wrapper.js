@@ -1,7 +1,6 @@
-// @flow
 import React, { Component } from 'react';
 
-const stylesheet:{[key:string]: Object} = {
+const stylesheet = {
   modalContainer: {
     position: 'fixed',
     height: '100%',
@@ -47,16 +46,8 @@ const stylesheet:{[key:string]: Object} = {
   }
 };
 
-type ModalWrapperProps = {
-  visible: bool,
-  close: Function,
-  theme?: string,
-  children?: any
-};
-
 export default class ModalWrapper extends Component {
-
-  props: ModalWrapperProps;
+  displayName: 'ModalWrapper';
 
   render () {
     const { visible, close, theme} = this.props;

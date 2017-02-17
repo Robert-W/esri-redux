@@ -10,26 +10,6 @@
     "modules": true,
     "jsx": true
   },
-  "globals": {
-    "require": true,
-    "EsriView": true,
-    "AppState": true,
-    "State": true,
-    "Action": true,
-    "AsyncAction": true,
-    "Reducer": true,
-    "BaseDispatch": true,
-    "Dispatch": true,
-    "ActionCreator": true,
-    "MiddlewareAPI": true,
-    "Middleware": true,
-    "Store": true,
-    "StoreCreator": true,
-    "StoreEnhancer": true,
-    "ActionCreatorOrObjectOfACs": true,
-    "Reducers": true,
-    "Redux": true
-  },
   "plugins": [
     "react"
   ],
@@ -48,7 +28,7 @@
     "react/no-direct-mutation-state": 2,
     "react/no-is-mounted": 2,
     "react/no-unknown-property": 2,
-    "react/prop-types": 2,
+    "react/prop-types": 0,
     "react/react-in-jsx-scope": 2,
     "prefer-const": 2,
     "no-console": 0,

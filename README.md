@@ -8,7 +8,7 @@ This project requires [Node.js](https://nodejs.org/en/)
 2. `npm start`
 
 ### Additional Branches
-1. [`master-noflow`](https://github.com/Robert-W/esri-redux/tree/master-noflow) - Same as this branch but without Flow Type checker implemented.
+1. [`flow`](https://github.com/Robert-W/esri-redux/tree/flow) - Same as this branch but is using Facebook's Flow, a static type checker.
 2. [`material-ui`](https://github.com/Robert-W/esri-redux/tree/material-ui) - Branch very similar to this, but demonstrating that with Webpack, we can incorporate nice UI libraries easily. Check out the documentation on [material-ui](http://www.material-ui.com/) to see what else you can do with this branch as a starting point.
 
 ### NPM scripts
@@ -16,27 +16,22 @@ This project requires [Node.js](https://nodejs.org/en/)
 > Starts the babel-cli, watches your html and sass files for changes, and starts an express dev server with hot module replacement enabled.
 
 `npm test`
-> Tests all src files with eslint and runs flow against all the files that have opted in (via the /\* @flow \*/ comment).
+> Tests all src files with eslint. Mocha tests can also easily be added.
 
 `npm run dist`
 > Generates an optimized build in the dist directory. It uses webpack to transpile, bundle, and minify the src as well as many other things, like inline css and inject hash numbers into html for optimal performance and automated cache-busting. For more info, see [Building - Webpack](#building---webpack).
 
 ### Tooling
 
-#### Type Checking - Flow
-This project demonstrated the basics of Flow and how to set it up and test it. I will try to add more advanced Flow options and configurations as time goes on and I learn more about how Flow works. There are also other enhancements I would like to add, like live Flow checking with `linter-flow` in Atom.
-
 #### CSS Preprocessing - Sass
 This uses a sass loader in webpack so you can just import your scss in your components. Webpack will inject these as style tags in dev mode so you get live reload of css. In production, it will inline `critical.scss` and append `app.scss` into your html for you.
 
-#### Image import
-To import images in you project first you need to import image from 'images' folder
+#### Image importing - Webpack loaders
+You can also import images directly in your components using Webpack's various loaders if you would like. You can do so the same way you would import any other file, like so.
 
 `import logoImg from 'images/logo.svg';`
 
-and reference in code
-
-`<img src={logoImg}/>`
+and reference in JSX: `<img src={logoImg}/>`
 
 #### ES6 - Babel
 This uses Babel for transpiling the build, it also uses `React`, `es2015`, and `stage-0` presets so I can play with the latest ES6 features.  It will strip the Flow types from the code when it compiles to AMD so that there is no issue at runtime in the browser.

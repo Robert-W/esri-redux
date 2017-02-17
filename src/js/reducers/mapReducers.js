@@ -1,19 +1,18 @@
-// @flow
 import { VIEW_READY, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import {initialState} from 'js/config';
 
-export function viewCreated (state:State = initialState.viewReady, action:Action):State {
+export function viewCreated (state = initialState.viewReady, action) {
   return action.type !== VIEW_READY ? state : true;
 }
 
-export function toggleShareModal (state:State = initialState.shareModalVisible, action:Action):State {
+export function toggleShareModal (state = initialState.shareModalVisible, action) {
   const {type, data} = action;
   return type !== TOGGLE_SHARE ? state : (
     data.visible
   );
 }
 
-export function toggleLocateModal (state:State = initialState.locateModalVisible, action:Action):State {
+export function toggleLocateModal (state = initialState.locateModalVisible, action) {
   const {type, data} = action;
   return type !== TOGGLE_LOCATE ? state : (
     data.visible
@@ -23,7 +22,7 @@ export function toggleLocateModal (state:State = initialState.locateModalVisible
 /**
 * Reducer for the async action
 */
-export function getItemInfo (state:State = initialState.itemInfo, action:AsyncAction):State {
+export function getItemInfo (state = initialState.itemInfo, action) {
   const {type, data} = action;
   return type !== FETCH_ITEM_INFO ? state : data;
 }

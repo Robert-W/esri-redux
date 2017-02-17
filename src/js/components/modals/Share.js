@@ -1,16 +1,12 @@
-// @flow
 import {toggleShareModal} from 'js/actions/mapActions';
 import Wrapper from 'js/components/modals/Wrapper';
 import React, { Component } from 'react';
 import appStore from 'js/appStore';
-// Type Import
-import type {ModalProps} from './Types';
 
 export default class ShareModal extends Component {
+  displayName: 'ShareModal';
 
-  props: ModalProps;
-
-  close:Function = () => {
+  close = () => {
     appStore.dispatch(toggleShareModal({ visible: false }));
   };
 

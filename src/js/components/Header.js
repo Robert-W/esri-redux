@@ -1,15 +1,8 @@
-// @flow
 import React, {Component} from 'react';
 import logoImg from 'images/logo.svg';
 
-type HeaderProps = {
-  title: string,
-  subtitle: string
-};
-
 export default class Header extends Component {
   displayName: 'Header';
-  props: HeaderProps;
 
   render () {
     const {title, subtitle} = this.props;

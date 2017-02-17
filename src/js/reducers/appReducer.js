@@ -1,4 +1,3 @@
-// @flow
 import {viewCreated, toggleLocateModal, toggleShareModal, getItemInfo} from 'js/reducers/mapReducers';
 import {combineReducers} from 'redux';
 

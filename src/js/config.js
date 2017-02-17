@@ -1,26 +1,25 @@
-// @flow
-export const initialState:AppState = {
+export const initialState = {
   locateModalVisible: false,
   shareModalVisible: false,
   viewReady: false,
   itemInfo: {}
 };
 
-export const text:{[key:string]: string} = {
+export const text = {
   title: 'Esri Redux Example',
   subtitle: 'Example with Redux, React, Esri, Sass, and more.'
 };
 
-export const mapOptions:{[key:string]: any} = {
+export const mapOptions = {
   basemap: 'streets-vector'
 };
 
-export const viewOptions:{[key:string]: any} = {
+export const viewOptions = {
   ui: { components: ['logo', 'attribution'] },
   center: [-35.55, 26.53],
   zoom: 2
 };
 
 export const urls = {
-  itemInfo: (appid: string) => `//www.arcgis.com/sharing/rest/content/items/${appid}/data`
+  itemInfo: appid => `//www.arcgis.com/sharing/rest/content/items/${appid}/data`
 };

@@ -1,3 +1,2 @@
-// @flow
 export const
-  ENV_PROD:string = 'production';
+  ENV_PROD = 'production';

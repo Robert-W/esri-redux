@@ -40,7 +40,7 @@ module.exports = {
       exclude: /(node_modules|build)/,
       query: {
         presets: ['es2015', 'react', 'stage-0'],
-        plugins: ['transform-runtime', 'babel-plugin-transform-flow-strip-types']
+        plugins: ['transform-runtime']
       }
     }, {
       test: /critical\.scss$/,

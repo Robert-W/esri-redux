@@ -60,7 +60,7 @@ module.exports = {
       exclude: /(node_modules)/,
       query: {
         presets: ['es2015', 'react', 'stage-0'],
-        plugins: ['transform-runtime', 'babel-plugin-transform-flow-strip-types']
+        plugins: ['transform-runtime']
       }
     }, {
       test: /\.(jpe?g|png|gif|svg)$/i,

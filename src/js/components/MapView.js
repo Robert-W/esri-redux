@@ -1,4 +1,3 @@
-// @flow
 import {viewCreated, getItemInfo} from 'js/actions/mapActions';
 import LocateModal from 'js/components/modals/Locate';
 import ShareModal from 'js/components/modals/Share';
@@ -11,19 +10,16 @@ import MapView from 'esri/views/MapView';
 import EsriMap from 'esri/Map';
 
 export default class Map extends Component {
-
   displayName: 'Map';
-
-  state: AppState = appStore.getState();
-  unsubscribe: () => void;
-  view: EsriView = {};
+  state = appStore.getState();
+  view = {};
 
   componentDidMount() {
     // Subscribe to the store for updates
     this.unsubscribe = appStore.subscribe(this.storeDidUpdate);
 
     // Create our map view
-    const promise:Promise<Object> = new MapView({
+    const promise = new MapView({
       container: this.refs.mapView,
       map: new EsriMap(mapOptions),
       ...viewOptions
@@ -41,7 +37,7 @@ export default class Map extends Component {
     this.unsubscribe();
   }
 
-  storeDidUpdate:Function = () => {
+  storeDidUpdate = () => {
     this.setState(appStore.getState());
   };
 

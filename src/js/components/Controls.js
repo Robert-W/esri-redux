@@ -1,4 +1,3 @@
-// @flow
 import {toggleShareModal, toggleLocateModal} from 'js/actions/mapActions';
 import React, {Component} from 'react';
 import appStore from 'js/appStore';
@@ -10,33 +9,28 @@ const zoomOutSvg = '<use xlink:href="#icon-zoom-out" />',
 
 const animationOptions = { duration: 300 };
 
-type ControlsProps = {
-  view: EsriView
-};
-
 export default class Controls extends Component {
   displayName: 'Controls';
-  props: ControlsProps;
 
-  zoomIn:Function = () => {
+  zoomIn = () => {
     const {view} = this.props;
     if (view) {
       view.goTo({ zoom: view.zoom + 1 }, animationOptions);
     }
   };
 
-  zoomOut:Function = () => {
+  zoomOut = () => {
     const {view} = this.props;
     if (view) {
       view.goTo({ zoom: view.zoom - 1 }, animationOptions);
     }
   };
 
-  locate:Function = () => {
+  locate = () => {
     appStore.dispatch(toggleLocateModal({ visible: true }));
   };
 
-  share:Function = () => {
+  share = () => {
     appStore.dispatch(toggleShareModal({ visible: true }));
   };
 
