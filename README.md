@@ -4,7 +4,7 @@
 ### Getting started
 This project requires [Node.js](https://nodejs.org/en/)
 
-1. `npm install`
+1. Install dependencies: `npm install` or `yarn`
 2. `npm start`
 
 ### Additional Branches
