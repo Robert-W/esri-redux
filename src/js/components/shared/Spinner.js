@@ -29,7 +29,6 @@ type SpinnerProps = {
 };
 
 export default class Spinner extends Component {
-
   displayName: 'Spinner';
   props: SpinnerProps;
 

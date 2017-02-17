@@ -55,7 +55,7 @@ type ModalWrapperProps = {
 };
 
 export default class ModalWrapper extends Component {
-
+  displayName: 'ModalWrapper';
   props: ModalWrapperProps;
 
   render () {

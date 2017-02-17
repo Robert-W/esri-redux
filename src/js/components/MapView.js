@@ -11,9 +11,7 @@ import MapView from 'esri/views/MapView';
 import EsriMap from 'esri/Map';
 
 export default class Map extends Component {
-
   displayName: 'Map';
-
   state: AppState = appStore.getState();
   unsubscribe: () => void;
   view: EsriView = {};

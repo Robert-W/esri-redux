@@ -7,7 +7,7 @@ import appStore from 'js/appStore';
 import type {ModalProps} from './Types';
 
 export default class ShareModal extends Component {
-
+  displayName: 'ShareModal';
   props: ModalProps;
 
   close:Function = () => {

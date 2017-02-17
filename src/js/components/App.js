@@ -5,7 +5,6 @@ import React, {Component} from 'react';
 import {text} from 'js/config';
 
 export default class App extends Component {
-
   displayName: 'App';
   props: any;
 

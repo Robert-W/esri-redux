@@ -12,6 +12,7 @@ declarations/
 ##
 module.name_mapper='js'->'<PROJECT_ROOT>/src/js/'
 module.name_mapper='css'->'<PROJECT_ROOT>/src/css/'
+module.name_mapper='images'->'<PROJECT_ROOT>/src/images/'
 ##
 # Map esri/dojo modules to a non-flow checked file so they do not throw module not found errors
 ##
@@ -20,7 +21,7 @@ module.name_mapper='dojo\/.*'->'<PROJECT_ROOT>/src/js/main.js'
 ##
 # Flow cant parse these non-standard imports, so map them to a non-flow checked file
 ##
-module.name_mapper='.*\(.scss\|.png\)'->'<PROJECT_ROOT>/src/js/main.js'
+module.name_mapper='.*\(.scss\|.png\|.svg\|.jpg\)'->'<PROJECT_ROOT>/src/js/main.js'
 ##
 # Configure certain es6 features
 ##

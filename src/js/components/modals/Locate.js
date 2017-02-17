@@ -7,7 +7,7 @@ import appStore from 'js/appStore';
 import type {ModalProps} from './Types';
 
 export default class LocateModal extends Component {
-
+  displayName: 'LocateModal';
   props: ModalProps;
 
   close:Function = () => {
