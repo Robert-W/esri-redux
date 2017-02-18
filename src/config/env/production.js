@@ -2,6 +2,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const InlineStylePlugin = require('../scripts/inline-style');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
+const defaultConfig = require('./default');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -12,6 +13,13 @@ function isResolvable (request) {
 }
 
 /**
+* Text for html webpack plugin
+*/
+const text = Object.assign({
+  arcgisVersion: process.env.ARCGIS_API_VERSION || 4.2
+}, defaultConfig.app);
+
+/**
 * @name exports
 * @static
 * @summary Production environment configurations
@@ -20,7 +28,7 @@ module.exports = {
 
   webpack: {
     profile: true,
-    entry: path.join(root, 'src/js/main'),
+    entry: path.join(root, 'app/js/main'),
     output: {
       path: path.join(root, 'dist'),
       filename: 'js/[name].[hash].js',
@@ -28,9 +36,9 @@ module.exports = {
     },
     resolve: {
       alias: {
-        'js': path.join(root, 'src/js'),
-        'css': path.join(root, 'src/css'),
-        'images': path.join(root, 'src/images')
+        'js': path.join(root, 'app/js'),
+        'css': path.join(root, 'app/css'),
+        'images': path.join(root, 'app/images')
       }
     },
     externals: [function (context, request, callback) {
@@ -81,7 +89,7 @@ module.exports = {
       new ExtractTextPlugin('css/critical.css'),
       new InlineStylePlugin('css/critical.css'),
       new HtmlWebpackPlugin({
-        template: 'src/index.html',
+        template: 'app/index.html',
         inject: false,
         minify: {
           removeStyleLinkTypeAttributes: true,
@@ -92,7 +100,8 @@ module.exports = {
           minifyURLs: true,
           minifyCSS: true,
           minifyJS: true
-        }
+        },
+        text: text
       })
     ]
   }

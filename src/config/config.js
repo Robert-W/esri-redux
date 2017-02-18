@@ -14,7 +14,7 @@ const makeConfig = () => {
   try {
     environmentConfig = require(path.resolve(`./config/env/${process.env.NODE_ENV}`));
   } catch (err) {
-    console.log(`No configuration files found matching environemnt ${process.env.NODE_ENV}`);
+    console.log(`No configuration files found matching ${process.env.NODE_ENV} environment`);
     environmentConfig = {};
   }
 

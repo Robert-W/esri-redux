@@ -1,12 +1,20 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var webpack = require('webpack');
-var path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const defaultConfig = require('./default');
+const webpack = require('webpack');
+const path = require('path');
 
 const root = process.cwd();
 
 function isResolvable (request) {
   return /^dojo/.test(request) || /^dojox/.test(request) || /^dijit/.test(request) || /^esri/.test(request);
 }
+
+/**
+* Text for html webpack plugin
+*/
+const text = Object.assign({
+  arcgisVersion: process.env.ARCGIS_API_VERSION || 4.2
+}, defaultConfig.app);
 
 /**
 * @name exports
@@ -21,7 +29,7 @@ module.exports = {
     entry: [
       'webpack/hot/dev-server',
       'webpack-hot-middleware/client',
-      path.join(root, 'src/js/main')
+      path.join(root, 'app/js/main')
     ],
     output: {
       path: path.join(root, 'public'),
@@ -37,16 +45,17 @@ module.exports = {
     }],
     resolve: {
       alias: {
-        'js': path.join(root, 'src/js'),
-        'css': path.join(root, 'src/css'),
-        'images': path.join(root, 'src/images')
+        'js': path.join(root, 'app/js'),
+        'css': path.join(root, 'app/css'),
+        'images': path.join(root, 'app/images')
       }
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: 'src/index.html',
+        template: 'app/index.html',
         filename: 'index.html',
-        inject: false
+        inject: false,
+        text: text
       }),
       new webpack.HotModuleReplacementPlugin(),
       new webpack.NoEmitOnErrorsPlugin()

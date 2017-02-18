@@ -4,7 +4,7 @@
   "description": "Simple boilerplate demonstrating how to setup a project using React, Redux, Flow, and the Esri JavaScript API.",
   "main": "scripts/start.js",
   "scripts": {
-    "start": "node config/scripts/nodemon",
+    "start": "node config/scripts/nodemon.js",
     "dist": "rm -rf dist; node config/scripts/build; node config/scripts/prerender;",
     "test": "eslint src/js/**/*.js;"
   },

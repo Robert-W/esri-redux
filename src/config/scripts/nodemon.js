@@ -10,7 +10,7 @@ nodemon({
   script: 'config/scripts/dev-server.js',
   ext: 'js json',
   verbose: true,
-  watch: ['config/**/*.js']
+  watch: ['config/env/*.js', 'config/scripts/*.js']
 });
 
 nodemon
