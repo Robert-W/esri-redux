@@ -1,5 +1,0 @@
-localhost:443
-tls self_signed
-gzip { level 1 }
-browse
-ext .html

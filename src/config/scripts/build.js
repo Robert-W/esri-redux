@@ -1,20 +1,13 @@
 process.env.NODE_ENV = 'production';
 
-const config = require('../config/webpack.prod');
+const config = require('../config');
 const webpack = require('webpack');
 
-let compiler;
-
-try {
-  compiler = webpack(config);
-} catch (err) {
-  console.log(err);
-  throw err;
-}
+const compiler = webpack(config.webpack);
 
 //- Output progress
 compiler.apply(new webpack.ProgressPlugin(function (percentage, msg) {
-  const message = Math.floor(percentage * 100) + '% ' + msg.toString();
+  const message = `${Math.floor(percentage * 100)}% ${msg.toString()}`;
   process.stdout.clearLine();
   process.stdout.cursorTo(0);
   process.stdout.write(message);

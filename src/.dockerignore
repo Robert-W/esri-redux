@@ -1,0 +1,11 @@
+# Ignore Git files
+.git
+.gitignore
+
+# Ignore installed modules
+node_modules
+
+# Ignore any secret files when they are added, this way they are not part of the image
+
+# Ignore system files
+.DS_Store

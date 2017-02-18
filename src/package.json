@@ -4,8 +4,8 @@
   "description": "Simple boilerplate demonstrating how to setup a project using React, Redux, Flow, and the Esri JavaScript API.",
   "main": "scripts/start.js",
   "scripts": {
-    "start": "node scripts/start",
-    "dist": "rm -rf dist;node scripts/build;node scripts/prerender;",
+    "start": "node config/scripts/nodemon",
+    "dist": "rm -rf dist; node config/scripts/build; node config/scripts/prerender;",
     "test": "eslint src/js/**/*.js;"
   },
   "keywords": [
@@ -53,6 +53,7 @@
     "html-webpack-plugin": "^2.28.0",
     "image-webpack-loader": "^2.0.0",
     "node-sass": "^3.13.1",
+    "nodemon": "^1.11.0",
     "postcss-loader": "^0.9.1",
     "react-hot-loader": "^1.3.1",
     "requirejs": "^2.3.2",

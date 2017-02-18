@@ -1,0 +1,22 @@
+version: '2'
+
+services:
+  web:
+    build:
+      context: src
+      dockerfile: Dockerfile
+    env_file: env/local.env
+    environment:
+      EXPERIMENTAL: 'true'
+      NODE_ENV: 'development'
+    # ports and volumes use syntax "host:container"
+    ports:
+      # Node app in container serves on port 3000, expose that to the host
+      - "3000:3000"
+    volumes:
+      # Expose the dist directory for static builds
+      - ./dist:/srv/src/dist
+      # Expose the app directory so changes made on the host update in the container as well
+      - ./src/app:/srv/src/app
+      # Expose config directory (and scripts) for Nodemon
+      - ./src/config:/srv/src/config

@@ -2,18 +2,18 @@ process.env.NODE_ENV = 'development';
 
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');
-const config = require('../config/webpack.dev');
+const config = require('../config');
 const webpack = require('webpack');
 const express = require('express');
 const app = express();
 
 const port = process.env.PORT || 3000;
-const compiler = webpack(config);
+const compiler = webpack(config.webpack);
 const path = 'public';
 
 app.use(webpackDevMiddleware(compiler, { stats: { colors: true } }));
 app.use(webpackHotMiddleware(compiler));
-app.use(express.static('public'));
+app.use(express.static(path));
 app.listen(port, function () {
   console.log('[\x1B[34mexpress\x1B[39m] \x1B[1mDev Server\x1B[1m');
   console.log('\x1B[37m------------------------------\x1B[39m');
