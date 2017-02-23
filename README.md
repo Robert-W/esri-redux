@@ -9,7 +9,8 @@ This project requires [Node.js](https://nodejs.org/en/)
 
 ### Additional Branches
 1. [`flow`](https://github.com/Robert-W/esri-redux/tree/flow) - Same as this branch but is using Facebook's Flow, a static type checker.
-2. [`material-ui`](https://github.com/Robert-W/esri-redux/tree/material-ui) - Branch very similar to this, but demonstrating that with Webpack, we can incorporate nice UI libraries easily. Check out the documentation on [material-ui](http://www.material-ui.com/) to see what else you can do with this branch as a starting point.
+2. [`docker`](https://github.com/Robert-W/esri-redux/tree/docker) - Basically the same front end code as this branch but with some changes to the tooling to support running inside a docker container. Has all the same functionality and supports all the same build commands (although the actual commands are different but are listed in the readme). Production server to allow for deploying to a container service and more advanced testing is coming soon.
+3. [`material-ui`](https://github.com/Robert-W/esri-redux/tree/material-ui) - Branch very similar to this, but demonstrating that with Webpack, we can incorporate nice UI libraries easily. Check out the documentation on [material-ui](http://www.material-ui.com/) to see what else you can do with this branch as a starting point.
 
 ### NPM scripts
 `npm start`
