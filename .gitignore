@@ -1,9 +1,10 @@
-# Ignore the build and dist directories
+# Ignore dist directory
 dist
 
-# Ignore these, just do it
+# Ignore artifacts and dependencies
 node_modules
 .DS_Store
+coverage
 *.log
 *.swp
 
