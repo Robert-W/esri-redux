@@ -2,6 +2,9 @@ import Wrapper from 'js/components/modals/Wrapper';
 import { shallow } from 'enzyme';
 import React from 'react';
 
+/**
+* Enzyme is great for dom testing
+*/
 describe('Modal Wrapper Tests', () => {
 
   test('Rendering the Modal Wrapper should not throw', () => {
