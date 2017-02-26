@@ -28,6 +28,8 @@ describe('Modal Wrapper Tests', () => {
     expect(wrapper.node.props.style.display).toMatch('none');
     wrapper.setProps({ visible: true });
     expect(wrapper.node.props.style.display).toMatch('block');
+    wrapper.setProps({ visible: false });
+    expect(wrapper.node.props.style.display).toMatch('none');
   });
 
   test('Should call the close callback when the close icon is clicked', () => {
