@@ -1,5 +1,7 @@
 import Wrapper from 'js/components/modals/Wrapper';
+import { shallow } from 'enzyme';
+import React from 'react';
 
-test('Make sure the components are loaded and defined', () => {
-  expect(Wrapper).toBeDefined();
+test('Rendering the Modal Wrapper should not throw', () => {
+  shallow(<Wrapper />);
 });
