@@ -1,5 +1,5 @@
 # esri-redux
-> Simple boilerplate demonstrating how to setup a project using React, Redux, Flow (if wanted), and the Esri JavaScript API. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).
+> Simple boilerplate demonstrating how to setup a project using React, Redux, Flow (if wanted), Jest, and the Esri JavaScript API. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).
 
 ### Getting started
 This project requires [Node.js](https://nodejs.org/en/)
@@ -17,7 +17,7 @@ This project requires [Node.js](https://nodejs.org/en/)
 > Starts the babel-cli, watches your html and sass files for changes, and starts an express dev server with hot module replacement enabled.
 
 `npm test`
-> Tests all src files with eslint. Mocha tests can also easily be added.
+> Runs `jest --coverage --verbose` and then tests all src files with `eslint`.
 
 `npm run dist`
 > Generates an optimized build in the dist directory. It uses webpack to transpile, bundle, and minify the src as well as many other things, like inline css and inject hash numbers into html for optimal performance and automated cache-busting. For more info, see [Building - Webpack](#building---webpack).
@@ -39,6 +39,9 @@ This uses Babel for transpiling the build, it also uses `React`, `es2015`, and `
 
 #### Building - Webpack
 Webpack and dojo used to not play nice together, but then I saw [https://github.com/lobsteropteryx/esri-webpack](https://github.com/lobsteropteryx/esri-webpack) which cleverly handled the esri dependencies as externals and built to AMD.  Now we have Webpack and dojo working together.  This also uses hot module replacement with gulp/browser-sync so if you edit your components, it can swap them out on the fly without reloading the whole page.
+
+#### Testing - Jest (with Enzyme)
+There are some sample tests under the `__tests__` directory. One of them uses react''s test renderer to take snapshot's. It is just en example of how to set it up but you should [read more here](https://facebook.github.io/jest/docs/tutorial-react.html#content) about testing components. I am also using Enzyme to shallow render some components. Enzyme provides a simple API to allow for testing and making assertions on our rendered components.
 
 See [Resources](#resources)
 
@@ -70,6 +73,8 @@ Now your running HTTP/2 with automatic HTTPS enabled!! This does not do hot modu
 * [Redux](http://redux.js.org/)
 * [Flow](http://flowtype.org/)
 * [Webpack](https://webpack.github.io/)
+* [Jest](https://facebook.github.io/jest/)
+* [Enzyme](http://airbnb.io/enzyme/)
 * [ArcGIS JavaScript API](https://js.arcgis.com)
 * [React-Prerender](https://github.com/Robert-W/react-prerender)
 * [Great talk from Yan Zhu on Security, HTTPS, and CSP](https://www.youtube.com/watch?v=CDdYu2CJ-SU)
