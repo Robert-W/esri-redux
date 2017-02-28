@@ -41,7 +41,7 @@ This uses Babel for transpiling the build, it also uses `React`, `es2015`, and `
 Webpack and dojo used to not play nice together, but then I saw [https://github.com/lobsteropteryx/esri-webpack](https://github.com/lobsteropteryx/esri-webpack) which cleverly handled the esri dependencies as externals and built to AMD.  Now we have Webpack and dojo working together.  This also uses hot module replacement with gulp/browser-sync so if you edit your components, it can swap them out on the fly without reloading the whole page.
 
 #### Testing - Jest (with Enzyme)
-There are some sample tests under the `__tests__` directory. One of them uses react''s test renderer to take snapshot's. It is just en example of how to set it up but you should [read more here](https://facebook.github.io/jest/docs/tutorial-react.html#content) about testing components. I am also using Enzyme to shallow render some components. Enzyme provides a simple API to allow for testing and making assertions on our rendered components.
+There are some sample tests under the `__tests__` directory. One of them uses react's test renderer to take snapshot's. It is just en example of how to set it up but snapshot's can be very useful and I highly recommend [reading more here](https://facebook.github.io/jest/docs/tutorial-react.html#content) about testing components. There is also an example using Enzyme to shallow render components. Enzyme provides a simple API for testing and making assertions on our rendered components.
 
 See [Resources](#resources)
 
