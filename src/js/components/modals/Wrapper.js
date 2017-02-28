@@ -73,9 +73,9 @@ export default class ModalWrapper extends Component {
               <path d="M 5 19 L 19 5 L 21 7 L 7 21 L 5 19 ZM 7 5 L 21 19 L 19 21 L 5 7 L 7 5 Z"></path>
             </svg>
           </div>
-            <div style={stylesheet.content}>
-              {this.props.children}
-            </div>
+          <div style={stylesheet.content}>
+            {this.props.children}
+          </div>
         </article>
       </div>
     );
