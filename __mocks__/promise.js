@@ -1,3 +1,3 @@
-module.exports = function MapView() {
+module.exports = function () {
   return new Promise(function () {});
 };

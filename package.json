@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node scripts/start",
     "dist": "rm -rf dist;node scripts/build;node scripts/prerender;",
-    "test": "jest --coverage --verbose;eslint src/js/**/*.js;"
+    "lint": "eslint src/js/**/*.js",
+    "test": "jest"
   },
   "keywords": [
     "hot",
@@ -27,15 +28,18 @@
   "author": "RobertW",
   "license": "MIT",
   "jest": {
+    "verbose": true,
+    "collectCoverage": true,
+    "coverageReporters": ["text"],
     "moduleNameMapper": {
-      "^js(.*)$": "<rootDir>/src/js$1",
-      "^dojo(.*)$": "<rootDir>/__mocks__/arcgis.js",
-      "esri/request": "<rootDir>/__mocks__/MapView.js",
+      "esri/Map": "<rootDir>/__mocks__/function.js",
       "esri/views/MapView": "<rootDir>/__mocks__/MapView.js",
-      "esri/Map": "<rootDir>/__mocks__/Map.js",
-      "^dijit(.*)$": "<rootDir>/__mocks__/arcgis.js",
-      "\\.(css|scss)$": "<rootDir>/__mocks__/style.js",
-      "\\.(jpe?g|png|gif|svg)$": "<rootDir>/__mocks__/static.js"
+      "^js(.*)$": "<rootDir>/src/js$1",
+      "^dojo(.*)$": "<rootDir>/__mocks__/object.js",
+      "^esri(.*)$": "<rootDir>/__mocks__/object.js",
+      "^dijit(.*)$": "<rootDir>/__mocks__/object.js",
+      "\\.(css|scss)$": "<rootDir>/__mocks__/object.js",
+      "\\.(jpe?g|png|gif|svg)$": "<rootDir>/__mocks__/object.js"
     }
   },
   "dependencies": {

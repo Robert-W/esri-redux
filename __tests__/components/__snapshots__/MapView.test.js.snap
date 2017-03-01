@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MapView snapshot Tests Sample of snapshot testing, not very useful, but shows how to do it 1`] = `
+exports[`MapView snapshot Tests Sample of snapshot testing for 3rd party components 1`] = `
 <div
   className="map-view"
 >
