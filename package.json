@@ -30,7 +30,9 @@
     "moduleNameMapper": {
       "^js(.*)$": "<rootDir>/src/js$1",
       "^dojo(.*)$": "<rootDir>/__mocks__/arcgis.js",
-      "^esri(.*)$": "<rootDir>/__mocks__/arcgis.js",
+      "esri/request": "<rootDir>/__mocks__/MapView.js",
+      "esri/views/MapView": "<rootDir>/__mocks__/MapView.js",
+      "esri/Map": "<rootDir>/__mocks__/Map.js",
       "^dijit(.*)$": "<rootDir>/__mocks__/arcgis.js",
       "\\.(css|scss)$": "<rootDir>/__mocks__/style.js",
       "\\.(jpe?g|png|gif|svg)$": "<rootDir>/__mocks__/static.js"
