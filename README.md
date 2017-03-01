@@ -16,11 +16,14 @@ This project requires [Node.js](https://nodejs.org/en/)
 `npm start`
 > Starts the babel-cli, watches your html and sass files for changes, and starts an express dev server with hot module replacement enabled.
 
-`npm test`
-> Runs `jest --coverage --verbose` and then tests all src files with `eslint`.
-
 `npm run dist`
 > Generates an optimized build in the dist directory. It uses webpack to transpile, bundle, and minify the src as well as many other things, like inline css and inject hash numbers into html for optimal performance and automated cache-busting. For more info, see [Building - Webpack](#building---webpack).
+
+`npm test`
+> Runs `jest`. Jest configurations are in the `package.json`. It will run in verbose mode with code coverage. You can run `npm test -- -u` if you need to update your snapshots.
+
+`npm run lint`
+> Runs `eslint src/js/**/*.js`. This just lints all your src files, including react components.
 
 ### Tooling
 
