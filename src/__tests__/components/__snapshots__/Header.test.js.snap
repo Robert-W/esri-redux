@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header snapshot Tests Sample of snapshot testing, not very useful, but shows how to do it 1`] = `
+<div
+  className="app-header"
+>
+  <h1
+    className="app-title"
+  >
+    Snapshot Test #1
+  </h1>
+  <h2
+    className="app-subtitle"
+  >
+    Test output over time in your component
+  </h2>
+  <img
+    alt="app-logo"
+    className="app-logo"
+    src={Object {}}
+  />
+</div>
+`;

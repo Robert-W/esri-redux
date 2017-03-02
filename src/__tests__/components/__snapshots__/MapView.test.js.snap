@@ -1,0 +1,294 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MapView snapshot Tests Sample of snapshot testing for 3rd party components 1`] = `
+<div
+  className="map-view"
+>
+  <div
+    className="map-controls shadow"
+  >
+    <ul
+      className="map-controls__list"
+    >
+      <li
+        className="map-controls__item pointer"
+        onClick={[Function]}
+      >
+        <svg
+          aria-label="Zoom out"
+          className="map-controls__item-icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<use xlink:href=\\"#icon-zoom-out\\" />",
+            }
+          }
+          role="img"
+        />
+      </li>
+      <li
+        className="map-controls__item pointer"
+        onClick={[Function]}
+      >
+        <svg
+          aria-label="Zoom in"
+          className="map-controls__item-icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<use xlink:href=\\"#icon-zoom-in\\" />",
+            }
+          }
+          role="img"
+        />
+      </li>
+      <li
+        className="map-controls__item pointer"
+        onClick={[Function]}
+      >
+        <svg
+          aria-label="Share your experience"
+          className="map-controls__item-icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<use xlink:href=\\"#icon-share\\" />",
+            }
+          }
+          role="img"
+        />
+      </li>
+      <li
+        className="map-controls__item pointer"
+        onClick={[Function]}
+      >
+        <svg
+          aria-label="Find my location"
+          className="map-controls__item-icon"
+          dangerouslySetInnerHTML={
+            Object {
+              "__html": "<use xlink:href=\\"#icon-locate\\" />",
+            }
+          }
+          role="img"
+        />
+      </li>
+    </ul>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "block",
+        "height": "100%",
+        "left": 0,
+        "position": "absolute",
+        "top": 0,
+        "width": "100%",
+      }
+    }
+  >
+    <div
+      style={
+        Object {
+          "height": "50px",
+          "left": "50%",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+          "width": "50px",
+        }
+      }
+    >
+      <svg
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "
+                        <g transform='translate(25,25) rotate(-90)'>
+                          <path d=\\"M0,25A25,25 0 1,1 0,-25A25,25 0 1,1 0,25M0,20A20,20 0 1,0 0,-20A20,20 0 1,0 0,20Z\\" style=\\"fill:transparent\\"></path>
+                          <path
+                            d=\\"M1.5308084989341915e-15,-25A25,25 0 0,1 25,0L20,0A20,20 0 0,0 1.2246467991473533e-15,-20Z\\"
+                            transform=\\"rotate(709.287459262793)\\"
+                            style=\\"animation: spinner 0.95s cubic-bezier(0.645, 0.045, 0.355, 1.000) infinite;fill: #FFFFFF;\\">
+                          </path>
+                        </g>
+                      ",
+          }
+        }
+        height="50"
+        width="50"
+      />
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "none",
+        "height": "100%",
+        "left": 0,
+        "position": "fixed",
+        "top": 0,
+        "width": "100%",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.25)",
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+    <article
+      className="share-modal"
+      style={
+        Object {
+          "backgroundColor": "white",
+          "height": "auto",
+          "left": "50%",
+          "padding": "30px",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+        }
+      }
+    >
+      <div
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+            "display": "flex",
+            "height": "30px",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "width": "30px",
+          }
+        }
+        title="close"
+      >
+        <svg
+          style={
+            Object {
+              "fill": "#555555",
+              "height": "26px",
+              "margin": "auto",
+              "width": "26px",
+            }
+          }
+          viewBox="0 0 25 25"
+        >
+          <title>
+            Close
+          </title>
+          <path
+            d="M 5 19 L 19 5 L 21 7 L 7 21 L 5 19 ZM 7 5 L 21 19 L 19 21 L 5 7 L 7 5 Z"
+          />
+        </svg>
+      </div>
+      <div
+        style={
+          Object {
+            "maxHeight": "450px",
+            "overflowX": "hidden",
+            "overflowY": "auto",
+            "padding": "5px",
+          }
+        }
+      >
+        <h3>
+          Share Something
+        </h3>
+      </div>
+    </article>
+  </div>
+  <div
+    style={
+      Object {
+        "display": "none",
+        "height": "100%",
+        "left": 0,
+        "position": "fixed",
+        "top": 0,
+        "width": "100%",
+        "zIndex": 10,
+      }
+    }
+  >
+    <div
+      onClick={[Function]}
+      style={
+        Object {
+          "backgroundColor": "rgba(0, 0, 0, 0.25)",
+          "height": "100%",
+          "width": "100%",
+        }
+      }
+    />
+    <article
+      className="locate-modal"
+      style={
+        Object {
+          "backgroundColor": "white",
+          "height": "auto",
+          "left": "50%",
+          "padding": "30px",
+          "position": "absolute",
+          "top": "50%",
+          "transform": "translate(-50%, -50%)",
+        }
+      }
+    >
+      <div
+        onClick={[Function]}
+        style={
+          Object {
+            "cursor": "pointer",
+            "display": "flex",
+            "height": "30px",
+            "position": "absolute",
+            "right": 0,
+            "top": 0,
+            "width": "30px",
+          }
+        }
+        title="close"
+      >
+        <svg
+          style={
+            Object {
+              "fill": "#555555",
+              "height": "26px",
+              "margin": "auto",
+              "width": "26px",
+            }
+          }
+          viewBox="0 0 25 25"
+        >
+          <title>
+            Close
+          </title>
+          <path
+            d="M 5 19 L 19 5 L 21 7 L 7 21 L 5 19 ZM 7 5 L 21 19 L 19 21 L 5 7 L 7 5 Z"
+          />
+        </svg>
+      </div>
+      <div
+        style={
+          Object {
+            "maxHeight": "450px",
+            "overflowX": "hidden",
+            "overflowY": "auto",
+            "padding": "5px",
+          }
+        }
+      >
+        <h3>
+          Locate Something
+        </h3>
+      </div>
+    </article>
+  </div>
+</div>
+`;

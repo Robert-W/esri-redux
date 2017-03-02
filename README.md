@@ -1,5 +1,5 @@
 # esri-redux
-> A simple boilerplate using the latest versions of React, Webpack, Redux, the Esri JavaScript API, and more. It runs in a docker container locally and allows for easy development, testing, and building. More testing with Jest and a production ready web server that can be deployed to your favorite container service are on the way. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).
+> A simple boilerplate using the latest versions of React, Webpack, Redux, Jest, and the Esri JavaScript API, and more. It runs in a docker container locally and allows for easy development, testing, and building. A production ready web server that can be deployed to your favorite container service will be coming soon. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).
 
 ### Getting started
 1. Make sure you have the latest [Docker for Mac](https://www.docker.com/products/docker#/mac) (or Windows or Linux) installed. Current code uses a version 2 compose file which requires docker-compose 1.10 or higher and it will soon be using a version 3 compose file which requires 1.13 or higher.
@@ -32,9 +32,18 @@ This will generate a build in a local dist folder at the root of this project wh
 - `docker-compose run web npm run dist`
 
 #### Running tests
-Run your tests inside your docker container with the following command. (Jest tests are coming soon).
+Run your tests inside your docker container with the following commands.
+
+##### Jest
+> Runs `jest`. Jest configurations are in the `package.json`. It will run in verbose mode with code coverage.
 
 - `docker-compose run web npm test`
+- `docker-compose run web npm test -- -u` if you need to update your snapshots.
+
+##### Eslint
+> Runs `eslint app/js/**/*.js` on all your source files inside the `app` directory.
+
+- `docker-compose run web npm run lint`
 
 #### Running a production web server in the container
 This will allow for running a production ready express web server that can be deployed to Amazon ECS or Google's container engine built on Kubernetes.
@@ -58,6 +67,9 @@ This uses Babel for transpiling the build, it also uses `React`, `es2015`, and `
 
 #### Building - Webpack
 Webpack and dojo used to not play nice together, but then I saw [https://github.com/lobsteropteryx/esri-webpack](https://github.com/lobsteropteryx/esri-webpack) which cleverly handled the esri dependencies as externals and built to AMD.  Now we have Webpack and dojo working together.  This also uses hot module replacement so you can swap out your components on the fly without reloading the whole page.
+
+#### Testing - Jest (with Enzyme)
+There are some sample tests under the `__tests__` directory. One of them uses react's test renderer to take snapshot's. It is just en example of how to set it up but snapshot's can be very useful and I highly recommend [reading more here](https://facebook.github.io/jest/docs/tutorial-react.html#content) about testing components. There is also an example using Enzyme to shallow render components. Enzyme provides a simple API for manipulating and making assertions on our rendered components.
 
 See [Resources](#resources)
 
@@ -91,6 +103,8 @@ Now your running HTTP/2 with automatic HTTPS enabled!! This does not do hot modu
 * [Redux](http://redux.js.org/)
 * [Flow](http://flowtype.org/)
 * [Webpack](https://webpack.github.io/)
+* [Jest](https://facebook.github.io/jest/)
+* [Enzyme](http://airbnb.io/enzyme/)
 * [ArcGIS JavaScript API](https://js.arcgis.com)
 * [React-Prerender](https://github.com/Robert-W/react-prerender)
 * [Great talk from Yan Zhu on Security, HTTPS, and CSP](https://www.youtube.com/watch?v=CDdYu2CJ-SU)
