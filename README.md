@@ -1,5 +1,5 @@
 # esri-redux
-> Simple boilerplate demonstrating how to setup a project using React, Redux, Flow (if wanted), and the Esri JavaScript API. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).
+> Simple boilerplate demonstrating how to setup a project using React, Redux, Flow (if wanted), Jest, and the Esri JavaScript API. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).
 
 ### Getting started
 This project requires [Node.js](https://nodejs.org/en/)
@@ -16,11 +16,20 @@ This project requires [Node.js](https://nodejs.org/en/)
 `npm start`
 > Starts the babel-cli, watches your html and sass files for changes, and starts an express dev server with hot module replacement enabled.
 
-`npm test`
-> Tests all src files with eslint and runs flow against all the files that have opted in (via the /\* @flow \*/ comment).
-
 `npm run dist`
 > Generates an optimized build in the dist directory. It uses webpack to transpile, bundle, and minify the src as well as many other things, like inline css and inject hash numbers into html for optimal performance and automated cache-busting. For more info, see [Building - Webpack](#building---webpack).
+
+`npm test`
+> Runs `jest`. Jest configurations are in the `package.json`. It will run in verbose mode with code coverage. You can run `npm test -- -u` if you need to update your snapshots.
+
+`npm run lint`
+> Runs `eslint src/js/**/*.js`. This just lints all your src files, including react components.
+
+`npm run flow`
+> Tests all src files by running flow against all the files that have opted in (via the /\* @flow \*/ comment).
+
+`npm run flow`
+> Runs `flow coverage --color src/js/components/App.js;` to test flow coverage on that file.
 
 ### Tooling
 
@@ -30,20 +39,21 @@ This project demonstrated the basics of Flow and how to set it up and test it. I
 #### CSS Preprocessing - Sass
 This uses a sass loader in webpack so you can just import your scss in your components. Webpack will inject these as style tags in dev mode so you get live reload of css. In production, it will inline `critical.scss` and append `app.scss` into your html for you.
 
-#### Image import
-To import images in you project first you need to import image from 'images' folder
+#### Image importing - Webpack loaders
+You can also import images directly in your components using Webpack's various loaders if you would like. You can do so the same way you would import any other file, like so.
 
 `import logoImg from 'images/logo.svg';`
 
-and reference in code
-
-`<img src={logoImg}/>`
+and reference in JSX: `<img src={logoImg}/>`
 
 #### ES6 - Babel
 This uses Babel for transpiling the build, it also uses `React`, `es2015`, and `stage-0` presets so I can play with the latest ES6 features.  It will strip the Flow types from the code when it compiles to AMD so that there is no issue at runtime in the browser.
 
 #### Building - Webpack
 Webpack and dojo used to not play nice together, but then I saw [https://github.com/lobsteropteryx/esri-webpack](https://github.com/lobsteropteryx/esri-webpack) which cleverly handled the esri dependencies as externals and built to AMD.  Now we have Webpack and dojo working together.  This also uses hot module replacement with gulp/browser-sync so if you edit your components, it can swap them out on the fly without reloading the whole page.
+
+#### Testing - Jest (with Enzyme)
+There are some sample tests under the `__tests__` directory. One of them uses react's test renderer to take snapshot's. It is just en example of how to set it up but snapshot's can be very useful and I highly recommend [reading more here](https://facebook.github.io/jest/docs/tutorial-react.html#content) about testing components. There is also an example using Enzyme to shallow render components. Enzyme provides a simple API for manipulating and making assertions on our rendered components.
 
 See [Resources](#resources)
 
@@ -75,6 +85,8 @@ Now your running HTTP/2 with automatic HTTPS enabled!! This does not do hot modu
 * [Redux](http://redux.js.org/)
 * [Flow](http://flowtype.org/)
 * [Webpack](https://webpack.github.io/)
+* [Jest](https://facebook.github.io/jest/)
+* [Enzyme](http://airbnb.io/enzyme/)
 * [ArcGIS JavaScript API](https://js.arcgis.com)
 * [React-Prerender](https://github.com/Robert-W/react-prerender)
 * [Great talk from Yan Zhu on Security, HTTPS, and CSP](https://www.youtube.com/watch?v=CDdYu2CJ-SU)

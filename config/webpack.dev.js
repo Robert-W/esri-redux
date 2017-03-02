@@ -56,12 +56,7 @@ module.exports = {
       loaders: ['style-loader', 'css-loader', 'sass-loader']
     }, {
       test: /\.js?$/,
-      loader: 'babel-loader',
-      exclude: /(node_modules)/,
-      query: {
-        presets: ['es2015', 'react', 'stage-0'],
-        plugins: ['transform-runtime', 'babel-plugin-transform-flow-strip-types']
-      }
+      loader: 'babel-loader'
     }, {
       test: /\.(jpe?g|png|gif|svg)$/i,
       loaders: [

@@ -1,0 +1,16 @@
+{
+  "presets": [
+    "react",
+    "es2015",
+    "stage-0"
+  ],
+  "plugins": [
+    "transform-runtime",
+    "babel-plugin-transform-flow-strip-types"
+  ],
+  "ignore": [
+    "node_modules",
+    "build"
+  ],
+  "env": {}
+}
