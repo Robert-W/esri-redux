@@ -7,7 +7,7 @@
     "start": "node scripts/start",
     "dist": "rm -rf dist;node scripts/build;node scripts/prerender;",
     "lint": "eslint src/js/**/*.js",
-    "test": "npm run lint; jest"
+    "test": "jest"
   },
   "keywords": [
     "hot",
