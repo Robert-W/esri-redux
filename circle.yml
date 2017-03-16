@@ -1,0 +1,10 @@
+general:
+  branches:
+    ignore:
+      - gh-pages
+      - docker
+      - material-ui
+machine:
+  timezone: America/New_York
+  node:
+    version: 6
