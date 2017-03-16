@@ -1,4 +1,4 @@
-# esri-redux
+# esri-redux [![CircleCI](https://circleci.com/gh/Robert-W/esri-redux.svg?style=svg)](https://circleci.com/gh/Robert-W/esri-redux)
 > Simple boilerplate demonstrating how to setup a project using React, Redux, Flow (if wanted), Jest, and the Esri JavaScript API. Demo available at [https://robert-w.github.io/esri-redux/](https://robert-w.github.io/esri-redux/).
 
 ### Getting started
