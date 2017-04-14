@@ -1,5 +1,6 @@
 import {toggleShareModal} from 'js/actions/mapActions';
-import Wrapper from 'js/components/modals/Wrapper';
+import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
 import React, { Component } from 'react';
 import appStore from 'js/appStore';
 
@@ -12,11 +13,18 @@ export default class ShareModal extends Component {
 
   render () {
     const {visible} = this.props;
+    const defaultButton = [
+      <RaisedButton label='OK' secondary={true} keyboardFocused={true} onTouchTap={this.close} />
+    ];
 
     return (
-      <Wrapper theme='share-modal' visible={visible} close={this.close}>
-        <h3>Share Something</h3>
-      </Wrapper>
+      <Dialog
+        open={visible}
+        title='Share'
+        actions={defaultButton}
+        onRequestClose={this.close}>
+        Share something
+      </Dialog>
     );
   }
 }

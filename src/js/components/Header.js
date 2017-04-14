@@ -1,5 +1,15 @@
+import AppBar from 'material-ui/AppBar';
 import React, {Component} from 'react';
 import logoImg from 'images/logo.svg';
+
+const titleStyle = {
+  alignItems: 'center',
+  paddingLeft: '10px',
+  fontSize: '24px',
+  display: 'flex',
+  color: 'white',
+  margin: 0
+};
 
 export default class Header extends Component {
   displayName: 'Header';
@@ -8,11 +18,14 @@ export default class Header extends Component {
     const {title, subtitle} = this.props;
 
     return (
-      <div className='app-header'>
-        <h1 className='app-title'>{title}</h1>
+      <AppBar
+        title={title}
+        titleStyle={titleStyle}
+        className='app-header'
+        showMenuIconButton={false}>
         <h2 className='app-subtitle'>{subtitle}</h2>
         <img className="app-logo" src={logoImg} alt="app-logo" />
-      </div>
+      </AppBar>
     );
   }
 }

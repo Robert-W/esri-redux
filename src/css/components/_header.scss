@@ -4,7 +4,6 @@
   flex-direction: column;
   position: absolute;
   display: flex;
-  color: white;
   height: 50px;
   width: 100%;
   z-index: 5;
@@ -12,15 +11,12 @@
   top: 0;
 }
 
-.app-title, .app-subtitle {
+.app-subtitle {
   align-items: center;
   padding-left: 10px;
   display: flex;
+  color: white;
   margin: 0;
-}
-
-.app-title {
-  font-size: 24px;
 }
 
 .app-subtitle {

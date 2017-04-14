@@ -1,3 +1,6 @@
+import lightBaseTheme from 'material-ui/styles/baseThemes/lightBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import renderer from 'react-test-renderer';
 import MapView from 'js/components/MapView';
 import React from 'react';
@@ -13,7 +16,9 @@ describe('MapView snapshot Tests', () => {
 
   test('Sample of snapshot testing for 3rd party components', () => {
     const header = renderer.create(
-      <MapView />
+      <MuiThemeProvider muiTheme={getMuiTheme(lightBaseTheme)}>
+        <MapView />
+      </MuiThemeProvider>
     );
     const tree = header.toJSON();
     expect(tree).toMatchSnapshot();
