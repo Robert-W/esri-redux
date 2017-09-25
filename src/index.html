@@ -5,7 +5,6 @@
     <meta name="author" content="RobertW">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' js.arcgis.com arcgis.com 'unsafe-inline' 'unsafe-eval';style-src 'self' js.arcgis.com 'unsafe-inline';">
     <meta charset="utf-8">
     <style><%= htmlWebpackPlugin.options.inlineStyles %></style>
   </head>
@@ -59,6 +58,6 @@
         callback: function () { require(['<%= htmlWebpackPlugin.files.js %>']); }
       };
     </script>
-    <script src='//js.arcgis.com/4.3/init.js' async></script>
+    <script src='http://js.arcgis.com/4.4/init.js' async></script>
   </body>
 </html>
