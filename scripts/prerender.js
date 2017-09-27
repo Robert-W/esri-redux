@@ -67,17 +67,17 @@ console.log('-------------------------');
 
 // Run webpack to generate the JS Bundle for prerendering
 var compiler = webpack(webpackconfig);
-compiler.run(function (err, stats) {
+compiler.run((err, stats) => {
   if (err) { throw err; }
   var modules, ignores = [], map = {}, requireconfig = {};
   //- 2 Try to get a list of the modules excluded from the bundle
   //- I need to remap these so require does not throw ENOENT
-  modules = stats.compilation.namedChunks.main.modules;
-  ignores = modules.map(function (module) { return module.request; }).filter(function (module) {
-    return config.filters.some(function (pattern) { return pattern.test(module); });
-  });
+  ignores = stats.compilation.namedChunks.main
+    .mapModules(module => module.request)
+    .filter(module => config.filters.some((regex) => regex.test(module)));
+
   //- 3
-  ignores.forEach(function (ignore) { map[ignore] = config.rjs.remap; });
+  ignores.forEach(ignore => { map[ignore] = config.rjs.remap; });
   // Configure requirejs
   requireconfig.nodeRequire = require;
   requireconfig.map = config.rjs.map(map);

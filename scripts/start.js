@@ -11,6 +11,9 @@ const port = process.env.PORT || 3000;
 const compiler = webpack(config);
 const path = 'public';
 
+//- Trace any deprecation output to help debug deprecation issues
+process.traceDeprecation = true;
+
 app.use(webpackDevMiddleware(compiler, { stats: { colors: true } }));
 app.use(webpackHotMiddleware(compiler));
 app.use(express.static('public'));

@@ -23,6 +23,9 @@ compiler.apply(new webpack.ProgressPlugin(function (percentage, msg) {
 console.log('\x1B[1mStarting build script\x1B[22m');
 console.log('---------------------');
 
+//- Trace any deprecation output to help debug deprecation issues
+process.traceDeprecation = true;
+
 //- Generate build and output stats
 compiler.run(function (err, stats) {
   if (err) {
