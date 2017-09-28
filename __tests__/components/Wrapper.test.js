@@ -1,3 +1,9 @@
+import { configure } from 'enzyme';
+import Adapter from 'enzyme-adapter-react-16';
+
+configure({ adapter: new Adapter() });
+
+
 import Wrapper from 'js/components/modals/Wrapper';
 import { shallow } from 'enzyme';
 import React from 'react';
@@ -28,11 +34,16 @@ describe('Modal Wrapper Tests', () => {
 
   test('Should set the display style according to the visible prop', () => {
     const wrapper = shallow(<Wrapper />);
-    expect(wrapper.node.props.style.display).toMatch('none');
+    let element = wrapper.getElement();
+    expect(element.props.style.display).toMatch('none');
+    // Make it visible
     wrapper.setProps({ visible: true });
-    expect(wrapper.node.props.style.display).toMatch('block');
+    element = wrapper.getElement();
+    expect(element.props.style.display).toMatch('block');
+    // Hide it again
     wrapper.setProps({ visible: false });
-    expect(wrapper.node.props.style.display).toMatch('none');
+    element = wrapper.getElement();
+    expect(element.props.style.display).toMatch('none');
   });
 
   test('Should call the close callback when the close icon is clicked', () => {
