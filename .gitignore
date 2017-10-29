@@ -5,6 +5,7 @@ dist
 # Ignore these, just do it
 node_modules
 .DS_Store
+coverage
 *.log
 *.swp
 
