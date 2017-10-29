@@ -51,9 +51,9 @@ export default class ModalWrapper extends Component {
 
   render () {
     let { visible, close, theme } = this.props;
-    let containerStyle:Object = Object.assign({}, STYLESHEET.modalContainer);
+    let containerStyle = Object.assign({}, STYLESHEET.modalContainer);
     //- Build up the attributes
-    let modalAttrs:Object = {
+    let modalAttrs = {
       style: STYLESHEET.modal
     };
 

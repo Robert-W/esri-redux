@@ -1,4 +1,5 @@
-process.env.NODE_ENV = 'production';
+// Ensure NODE_ENV is set before we require webpack.dev
+process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 const config = require('../config/webpack.prod');
 const webpack = require('webpack');
