@@ -1,5 +1,5 @@
 import esriRequest from 'esri/request';
-import {urls} from 'js/config';
+import { URLS } from 'js/config';
 
 export default {
 
@@ -7,7 +7,7 @@ export default {
   * @param {string} appid - Application Id or Webmap Id to get info about
   */
   getItemInfo: appid => {
-    return esriRequest(urls.itemInfo(appid), {
+    return esriRequest(URLS.itemInfo(appid), {
       responseType: 'json'
     });
   }

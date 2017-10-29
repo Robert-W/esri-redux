@@ -7,7 +7,7 @@ const react = require('react');
 const path = require('path');
 const fs = require('fs');
 
-const root = process.cwd();
+const ROOT = process.cwd();
 
 /**
 * @namespace
@@ -24,21 +24,21 @@ const root = process.cwd();
 * @property {string} react.mount - query to find DOM node to mount entry to
 * @property {string} react.target - html file to read in inject component markup into
 */
-const config = {
-  temp: path.join(root, 'temp.js'),
+let config = {
+  temp: path.join(ROOT, 'temp.js'),
   filters: [/esri\//, /dojo\//, /dijit\//],
   webpack: {
-    entry: path.join(root, 'src/js/components/App'),
-    outputPath: root,
+    entry: path.join(ROOT, 'src/js/components/App'),
+    outputPath: ROOT,
     outputFilename: 'temp.js'
   },
   rjs: {
     map: function (map) { return { '*': map }; },
-    remap: path.join(root, 'temp.js') // Same as outputPath + outputFilename minus extension
+    remap: path.join(ROOT, 'temp.js') // Same as outputPath + outputFilename minus extension
   },
   react: {
     mount: '#react-mount',
-    target: path.join(root, 'dist/index.html')
+    target: path.join(ROOT, 'dist/index.html')
   }
 };
 
@@ -66,10 +66,10 @@ console.log('\x1B[1mStarting prerender script\x1B[22m');
 console.log('-------------------------');
 
 // Run webpack to generate the JS Bundle for prerendering
-var compiler = webpack(webpackconfig);
+let compiler = webpack(webpackconfig);
 compiler.run((err, stats) => {
   if (err) { throw err; }
-  let modules, ignores = [], map = {}, requireconfig = {};
+  let ignores = [], map = {}, requireconfig = {};
   //- 2 Try to get a list of the modules excluded from the bundle
   //- I need to remap these so require does not throw ENOENT
   ignores = stats.compilation.namedChunks.main
@@ -83,11 +83,11 @@ compiler.run((err, stats) => {
   requireconfig.map = config.rjs.map(map);
   requirejs(requireconfig);
   //- 4
-  const Component = requirejs(config.webpack.outputFilename);
-  const markup = reactDomServer.renderToString(react.createElement(Component.default));
+  let Component = requirejs(config.webpack.outputFilename);
+  let markup = reactDomServer.renderToString(react.createElement(Component.default));
   //- 5
-  const file = fs.readFileSync(config.react.target, 'utf-8');
-  const $ = cheerio.load(file);
+  let file = fs.readFileSync(config.react.target, 'utf-8');
+  let $ = cheerio.load(file);
   $(config.react.mount).append(markup);
   //- 6
   fs.writeFileSync(config.react.target, $.html());

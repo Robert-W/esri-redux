@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-const stylesheet = {
+const STYLESHEET = {
   modalContainer: {
     position: 'fixed',
     height: '100%',
@@ -50,11 +50,11 @@ export default class ModalWrapper extends Component {
   displayName: 'ModalWrapper';
 
   render () {
-    const { visible, close, theme} = this.props;
-    let containerStyle:Object = Object.assign({}, stylesheet.modalContainer);
+    let { visible, close, theme } = this.props;
+    let containerStyle:Object = Object.assign({}, STYLESHEET.modalContainer);
     //- Build up the attributes
-    const modalAttrs:Object = {
-      style: stylesheet.modal
+    let modalAttrs:Object = {
+      style: STYLESHEET.modal
     };
 
     //- show or hide the container
@@ -65,15 +65,15 @@ export default class ModalWrapper extends Component {
 
     return (
       <div style={containerStyle}>
-        <div style={stylesheet.modalBackground} onClick={close} />
+        <div style={STYLESHEET.modalBackground} onClick={close} />
         <article {...modalAttrs}>
-          <div title='close' style={stylesheet.close} onClick={close}>
-            <svg style={stylesheet.closeSvg} viewBox='0 0 25 25'>
+          <div title='close' style={STYLESHEET.close} onClick={close}>
+            <svg style={STYLESHEET.closeSvg} viewBox='0 0 25 25'>
               <title>Close</title>
               <path d="M 5 19 L 19 5 L 21 7 L 7 21 L 5 19 ZM 7 5 L 21 19 L 19 21 L 5 7 L 7 5 Z"></path>
             </svg>
           </div>
-          <div style={stylesheet.content}>
+          <div style={STYLESHEET.content}>
             {this.props.children}
           </div>
         </article>

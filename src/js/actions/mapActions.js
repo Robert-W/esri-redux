@@ -1,5 +1,10 @@
-import { VIEW_READY, TOGGLE_SHARE, TOGGLE_LOCATE, FETCH_ITEM_INFO } from 'js/constants/actionTypes';
 import api from 'js/utils/api';
+import {
+  FETCH_ITEM_INFO,
+  TOGGLE_LOCATE,
+  TOGGLE_SHARE,
+  VIEW_READY
+} from 'js/constants/actionTypes';
 
 export function viewCreated () {
   return { type: VIEW_READY };

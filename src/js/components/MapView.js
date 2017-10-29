@@ -1,12 +1,12 @@
-import {viewCreated, getItemInfo} from 'js/actions/mapActions';
+import { viewCreated, getItemInfo } from 'js/actions/mapActions';
+import { MAP_OPTIONS, VIEW_OPTIONS } from 'js/config';
 import LocateModal from 'js/components/modals/Locate';
 import ShareModal from 'js/components/modals/Share';
 import Spinner from 'js/components/shared/Spinner';
-import {mapOptions, viewOptions} from 'js/config';
 import Controls from 'js/components/Controls';
-import React, {Component} from 'react';
-import appStore from 'js/appStore';
 import MapView from 'esri/views/MapView';
+import React, { Component } from 'react';
+import appStore from 'js/appStore';
 import EsriMap from 'esri/Map';
 
 export default class Map extends Component {
@@ -21,8 +21,8 @@ export default class Map extends Component {
     // Create our map view
     const promise = new MapView({
       container: this.refs.mapView,
-      map: new EsriMap(mapOptions),
-      ...viewOptions
+      map: new EsriMap(MAP_OPTIONS),
+      ...VIEW_OPTIONS
     });
 
     promise.then(view => {

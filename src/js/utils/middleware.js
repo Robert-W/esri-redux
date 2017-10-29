@@ -1,4 +1,4 @@
-const styles = {
+const STYLES = {
   actionType: 'font-weight:bold;font-size:1.1em',
   stateLabel: 'color:blue;'
 };
@@ -15,9 +15,9 @@ export const asyncActions = (api) => (next) => {
 */
 export const logger = (api) => (next) => {
   return (action) => {
-    const result = next(action);
-    console.log(`%c ${action.type}:`, styles.actionType, action);
-    console.log('%c next state', styles.stateLabel, api.getState());
+    let result = next(action);
+    console.log(`%c ${action.type}:`, STYLES.actionType, action);
+    console.log('%c next state', STYLES.stateLabel, api.getState());
     return result;
   };
 };

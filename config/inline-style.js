@@ -8,11 +8,11 @@ function InlineStyle (filepath) {
 }
 
 InlineStyle.prototype.apply = function (compiler) {
-  var self = this;
+  let self = this;
   compiler.plugin('compilation', function (compilation) {
     //- Code is Compiling
     compilation.plugin('html-webpack-plugin-before-html-generation', function (htmlPluginData, callback) {
-      var asset = compilation.assets[self.filepath];
+      let asset = compilation.assets[self.filepath];
       if (asset) {
         htmlPluginData.plugin.options.inlineStyles = asset.source();
       }

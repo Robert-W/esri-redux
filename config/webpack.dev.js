@@ -11,8 +11,6 @@ let weCantMake = function weCantMake (request) {
   return /^dojo/.test(request) || /^dojox/.test(request) || /^dijit/.test(request) || /^esri/.test(request);
 };
 
-console.log(defineEnvPlugin());
-
 module.exports = {
   devtool: 'source-map',
   cache: true,

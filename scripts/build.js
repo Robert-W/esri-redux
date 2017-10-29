@@ -14,10 +14,9 @@ try {
 
 //- Output progress
 compiler.apply(new webpack.ProgressPlugin(function (percentage, msg) {
-  const message = Math.floor(percentage * 100) + '% ' + msg.toString();
   process.stdout.clearLine();
   process.stdout.cursorTo(0);
-  process.stdout.write(message);
+  process.stdout.write(Math.floor(percentage * 100) + '% ' + msg.toString());
 }));
 
 console.log('\x1B[1mStarting build script\x1B[22m');
