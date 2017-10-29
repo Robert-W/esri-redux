@@ -1,7 +1,8 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const InlineStylePlugin = require('./inline-style');
-const autoprefixer = require('autoprefixer');
+// const autoprefixer = require('autoprefixer');
+const defineEnvPlugin = require('./webpack.env');
 const webpack = require('webpack');
 const path = require('path');
 
@@ -50,7 +51,7 @@ module.exports = {
     }]
   },
   plugins: [
-    new webpack.DefinePlugin({ 'process.env': {'NODE_ENV': '"production"'}}),
+    new webpack.DefinePlugin(defineEnvPlugin()),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {

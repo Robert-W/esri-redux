@@ -1,4 +1,5 @@
-process.env.NODE_ENV = 'development';
+// Ensure NODE_ENV is set before we require webpack.dev
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 const webpackDevMiddleware = require('webpack-dev-middleware');
 const webpackHotMiddleware = require('webpack-hot-middleware');

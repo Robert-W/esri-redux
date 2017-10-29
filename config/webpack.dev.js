@@ -1,14 +1,17 @@
 /* eslint-disable */
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var webpack = require('webpack');
-var path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const defineEnvPlugin = require('./webpack.env');
+const webpack = require('webpack');
+const path = require('path');
 
-const root = process.cwd();
+let root = process.cwd();
 
-const weCantMake = function weCantMake (request) {
+let weCantMake = function weCantMake (request) {
   return /^dojo/.test(request) || /^dojox/.test(request) || /^dijit/.test(request) || /^esri/.test(request);
 };
+
+console.log(defineEnvPlugin());
 
 module.exports = {
   devtool: 'source-map',
@@ -43,16 +46,12 @@ module.exports = {
       filename: 'index.html',
       inject: false
     }),
+    new webpack.DefinePlugin(defineEnvPlugin()),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
   ],
   module: {
     rules: [
-    //   {
-    //   test: /\.js?$/,
-    //   loader: 'react-hot-loader',
-    //   exclude: /(node_modules|build)/
-    // },
     {
       test: /\.scss$/,
       loaders: ['style-loader', 'css-loader', 'sass-loader']

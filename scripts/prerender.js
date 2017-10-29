@@ -69,7 +69,7 @@ console.log('-------------------------');
 var compiler = webpack(webpackconfig);
 compiler.run((err, stats) => {
   if (err) { throw err; }
-  var modules, ignores = [], map = {}, requireconfig = {};
+  let modules, ignores = [], map = {}, requireconfig = {};
   //- 2 Try to get a list of the modules excluded from the bundle
   //- I need to remap these so require does not throw ENOENT
   ignores = stats.compilation.namedChunks.main
