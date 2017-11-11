@@ -5,7 +5,7 @@
   "main": "scripts/start.js",
   "scripts": {
     "start": "node scripts/start",
-    "dist": "rm -rf dist;node scripts/build;node scripts/prerender;",
+    "dist": "export NODE_ENV=production;rm -rf dist;node scripts/build;node scripts/prerender;",
     "lint": "eslint src/js/**/*.js",
     "test": "jest"
   },
