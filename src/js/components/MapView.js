@@ -18,10 +18,12 @@ export default class Map extends Component {
     // Subscribe to the store for updates
     this.unsubscribe = appStore.subscribe(this.storeDidUpdate);
 
+    const map = new EsriMap(MAP_OPTIONS);
+
     // Create our map view
     const promise = new MapView({
       container: this.refs.mapView,
-      map: new EsriMap(MAP_OPTIONS),
+      map: map,
       ...VIEW_OPTIONS
     });
 
@@ -29,7 +31,7 @@ export default class Map extends Component {
       this.view = view;
       appStore.dispatch(viewCreated());
       //- Webmap from https://developers.arcgis.com/javascript/latest/api-reference/esri-WebMap.html
-      appStore.dispatch(getItemInfo('e691172598f04ea8881cd2a4adaa45ba'));
+      // appStore.dispatch(getItemInfo('e691172598f04ea8881cd2a4adaa45ba'));
     });
   }
 
