@@ -9,7 +9,8 @@ import React, { Component } from 'react';
 import appStore from 'js/appStore';
 import EsriMap from 'esri/Map';
 import FeatureLayer from 'esri/layers/FeatureLayer'; //Feature Layer
-import Popup from 'esri/widgets/Popup';
+import {earthquakePopupTemplate, drinkingWaterPopupTemplate} from '../constants/popupTemplates'; //Import Popup Templates
+//import Popup from 'esri/widgets/Popup';
 
 export default class Map extends Component {
   displayName: 'Map';
@@ -17,24 +18,17 @@ export default class Map extends Component {
   view = {};
 
   componentDidMount() {
-    let earthquakeTemplate = {
-      title: 'Incident: {time} at {place}',
-      content: '{*}'
-    };
-    let drinkingWaterTemplate = {
-      title: 'Drinking Water Open Street Map',
-      content: '{*}'
-    };
+    console.log(earthquakePopupTemplate, 'the template');
     // Subscribe to the store for updates
     this.unsubscribe = appStore.subscribe(this.storeDidUpdate);
     const featureLayer = new FeatureLayer({
       url: URLS.featureLayer,
       outFields: ['*'],
-      popupTemplate: earthquakeTemplate
+      popupTemplate: earthquakePopupTemplate
     });
     const waterFeatureLayer = new FeatureLayer({
       url: URLS.waterFeatureLayer,
-      popupTemplate: earthquakeTemplate,
+      popupTemplate: drinkingWaterPopupTemplate,
       outFields: ['*']
     });
 
@@ -51,8 +45,9 @@ export default class Map extends Component {
       ...VIEW_OPTIONS
     });
 
-    featureLayer.popupTemplate = earthquakeTemplate;
-    waterFeatureLayer.popupTemplate = drinkingWaterTemplate;
+    //Add popup templates to feature layer:
+    // featureLayer.popupTemplate = earthquakeTemplate;
+    // waterFeatureLayer.popupTemplate = drinkingWaterTemplate;
     promise.then(view => {
       this.view = view;
       appStore.dispatch(viewCreated());
