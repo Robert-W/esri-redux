@@ -1,5 +1,5 @@
 import { viewCreated, getItemInfo } from 'js/actions/mapActions';
-import { MAP_OPTIONS, VIEW_OPTIONS } from 'js/config';
+import { MAP_OPTIONS, VIEW_OPTIONS, URLS } from 'js/config';
 import LocateModal from 'js/components/modals/Locate';
 import ShareModal from 'js/components/modals/Share';
 import Spinner from 'js/components/shared/Spinner';
@@ -8,6 +8,8 @@ import MapView from 'esri/views/MapView';
 import React, { Component } from 'react';
 import appStore from 'js/appStore';
 import EsriMap from 'esri/Map';
+import FeatureLayer from 'esri/layers/FeatureLayer'; //Feature Layer
+import Popup from 'esri/widgets/Popup';
 
 export default class Map extends Component {
   displayName: 'Map';
