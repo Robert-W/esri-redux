@@ -38,7 +38,6 @@ export default class Map extends Component {
       outFields: ['*']
     });
 
-    const map = new EsriMap(MAP_OPTIONS);
     const map = new EsriMap({
       layers: [featureLayer, waterFeatureLayer],
       ...MAP_OPTIONS
