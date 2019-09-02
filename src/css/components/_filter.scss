@@ -1,0 +1,13 @@
+.filter-container {
+    display: flex;
+    flex-direction: row
+}
+.filter {
+    margin-left: 15px;
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    h3 {
+        margin-top: 0px
+    }
+  }

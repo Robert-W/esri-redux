@@ -7,7 +7,9 @@ export const INITIAL_STATE = {
 
 export const TEXT = {
   title: 'Earthquakes in the last 30 days with nearest drinking water sources',
-  subtitle: 'Example with Redux, React, Esri, Sass, and more.'
+  subtitle: 'Example with Redux, React, Esri, Sass, and more.',
+  earthquakeFilterTitle: 'Earthquake View Filter',
+  drinkingWaterFilterTitle: 'DrinkingWater View Filter'
 };
 
 export const MAP_OPTIONS = {
