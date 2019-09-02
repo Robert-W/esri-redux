@@ -17,10 +17,32 @@ export default class Map extends Component {
   view = {};
 
   componentDidMount() {
+    let earthquakeTemplate = {
+      title: 'Incident: {time} at {place}',
+      content: '{*}'
+    };
+    let drinkingWaterTemplate = {
+      title: 'Drinking Water Open Street Map',
+      content: '{*}'
+    };
     // Subscribe to the store for updates
     this.unsubscribe = appStore.subscribe(this.storeDidUpdate);
+    const featureLayer = new FeatureLayer({
+      url: URLS.featureLayer,
+      outFields: ['*'],
+      popupTemplate: earthquakeTemplate
+    });
+    const waterFeatureLayer = new FeatureLayer({
+      url: URLS.waterFeatureLayer,
+      popupTemplate: earthquakeTemplate,
+      outFields: ['*']
+    });
 
     const map = new EsriMap(MAP_OPTIONS);
+    const map = new EsriMap({
+      layers: [featureLayer, waterFeatureLayer],
+      ...MAP_OPTIONS
+    });
 
     // Create our map view
     const promise = new MapView({
@@ -30,6 +52,8 @@ export default class Map extends Component {
       ...VIEW_OPTIONS
     });
 
+    featureLayer.popupTemplate = earthquakeTemplate;
+    waterFeatureLayer.popupTemplate = drinkingWaterTemplate;
     promise.then(view => {
       this.view = view;
       appStore.dispatch(viewCreated());
