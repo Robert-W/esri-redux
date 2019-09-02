@@ -24,6 +24,7 @@ export default class Map extends Component {
     const promise = new MapView({
       container: this.refs.mapView,
       map: map,
+      layers: [featureLayer, waterFeatureLayer], //add the feature layer defined above
       ...VIEW_OPTIONS
     });
 
