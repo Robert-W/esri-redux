@@ -2,18 +2,33 @@ export const INITIAL_STATE = {
   locateModalVisible: false,
   shareModalVisible: false,
   viewReady: false,
-  itemInfo: {}
+  itemInfo: {},
+  earthquakeFilters: false,
+  drinkingWaterFilters: false
 };
 
 export const TEXT = {
   title: 'Earthquakes in the last 30 days with nearest drinking water sources',
   subtitle: 'Example with Redux, React, Esri, Sass, and more.',
+  earthquakeFilterText: {
+    title: 'Earthquake View Filter',
+    filter: 'Past 24 hours only'
+  },
+  drinkingWaterFilterText: {
+    title: 'DrinkingWater View Filter',
+    filter: 'Is drinking water amenity'
+  },
   earthquakeFilterTitle: 'Earthquake View Filter',
   drinkingWaterFilterTitle: 'DrinkingWater View Filter'
 };
 
 export const MAP_OPTIONS = {
   basemap: 'streets-vector'
+};
+
+export const OUT_FIELDS = {
+  earthquakeLayer: ['time', 'place', 'latitude, longitude'],
+  waterLayer: ['*']
 };
 
 export const VIEW_OPTIONS = {
