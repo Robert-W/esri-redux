@@ -10,31 +10,27 @@ export default class LayerFilter extends Component {
 
   _handleChange(event) {
       const target = event.target;
-      this.props.onClick(target);
-      console.log(target, 'the whole event');
+      const checked = target.checked;
+      const name = target.name;
+      const eventInfo = {
+          checked: checked,
+          name: name
+      };
+      this.props.onClick(eventInfo);
   }
 
   render () {
-      const {title} = this.props;
-      console.log(title, 'the title');
-      console.log(this.props, 'the props');
+      const {title, name} = this.props;
     return (
       <div className='filter'>
-        <h3>{this.props.title}</h3>
+        <h3>{title}</h3>
         <label >
             <input type="checkbox"
-                name="choiceOne"
+                name={name}
                 onChange={this._handleChange}
 
             />
-            <span>{'Filter One'}</span>
-        </label>
-        <label>
-            <input type="checkbox"
-                name="choiceTwo"
-                onChange={this._handleChange}
-            />
-            <span>{'Filter Two'}</span>
+            <span>{this.props.filterText}</span>
         </label>
       </div>
     );
