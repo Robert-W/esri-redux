@@ -3,7 +3,9 @@ import {
   FETCH_ITEM_INFO,
   TOGGLE_LOCATE,
   TOGGLE_SHARE,
-  VIEW_READY
+  VIEW_READY,
+  EARTHQUAKE_FILTER_UPDATED,
+  WATER_FILTER_UPDATED
 } from 'js/constants/actionTypes';
 
 export function viewCreated () {
@@ -17,6 +19,18 @@ export function toggleShareModal (data) {
 export function toggleLocateModal (data) {
   return { type: TOGGLE_LOCATE, data };
 }
+
+export function earthquakeFilterUpdated (data) {
+  return {type: EARTHQUAKE_FILTER_UPDATED, data: data.checked};
+}
+
+export function waterFilterUpdated (data) {
+  return {type: WATER_FILTER_UPDATED, data: data.checked};
+}
+
+
+
+
 
 /**
 * Example Async Action

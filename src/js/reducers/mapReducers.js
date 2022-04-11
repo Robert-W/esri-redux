@@ -4,7 +4,9 @@ import {
   FETCH_ITEM_INFO,
   TOGGLE_LOCATE,
   TOGGLE_SHARE,
-  VIEW_READY
+  VIEW_READY,
+  EARTHQUAKE_FILTER_UPDATED,
+  WATER_FILTER_UPDATED
 } from 'js/constants/actionTypes';
 
 export function viewCreated (state = INITIAL_STATE.viewReady, action) {
@@ -32,3 +34,15 @@ export function getItemInfo (state = INITIAL_STATE.itemInfo, action) {
   const {type, data} = action;
   return type !== FETCH_ITEM_INFO ? state : data;
 }
+
+export function setEarthquakeViewFilters (state = INITIAL_STATE.earthquakeFilters, action) {
+  const {type, data} = action;
+  return type !== EARTHQUAKE_FILTER_UPDATED ? state : data;
+}
+
+export function setDrinkingWaterViewFilters (state = INITIAL_STATE.drinkingWaterFilters, action) {
+  const {type, data} = action;
+  return type !== WATER_FILTER_UPDATED ? state : data;
+}
+
+

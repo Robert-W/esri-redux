@@ -16,7 +16,7 @@
   ],
   "extends": "eslint:recommended",
   "rules": {
-    "quotes": [2, "single", "avoid-escape"],
+    //"quotes": [2, "single", "avoid-escape"],
     "react/jsx-uses-react": 2,
     "react/display-name": 2,
     "react/jsx-no-duplicate-props": 2,
